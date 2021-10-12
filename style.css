@@ -1,0 +1,60 @@
+/*
+ Theme Name:   Huisentuinoutlet
+ Description:  Business and casual template
+ Author:       Adinda Knevel
+ Author URI:   http://adindamedia.nl
+ Version:      1.0.0
+ Tags:         light, colors, simple , no sidebar, responsive-layout, accessibility-ready
+*/
+
+h1 {
+  	font-family: 'Montserrat', sans-serif;
+	font-size: 36px;
+	font-weight: 800;
+	color: #333;
+}
+
+h2 {
+  	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	font-weight: 800;
+	color: #333;
+}
+
+h3 {
+  	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+	color: #00a99d;
+	font-weight: 700;
+}
+
+p {
+    font-size: 15px;
+    line-height: 25px;
+    color: #333333;
+	line-height: 1.73;
+  	font-family: 'Montserrat', sans-serif;
+}
+
+a {
+	color: #e95973;
+  	font-family: 'Montserrat', sans-serif;
+}
+
+span {
+  	font-family: 'Montserrat', sans-serif;
+}
+
+
+li {
+	font-size: 16px;
+  	font-family: 'Montserrat', sans-serif;
+	  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.88;
+}
+
+a:hover {
+	color: #000;
+}
+
