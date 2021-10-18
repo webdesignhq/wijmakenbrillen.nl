@@ -4,13 +4,29 @@
 get_header();
 ?>
 
-<div class="hero" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/hero.png);">
+<?php 
+
+if ( is_product_category() ){
+    global $wp_query;
+
+    // get the query object
+    $cat = $wp_query->get_queried_object();
+
+    // get the thumbnail id using the queried category term_id
+    $thumbnail_id = get_term_meta( $cat->term_id, 'thumbnail_id', true ); 
+
+    // get the image URL
+    $image = wp_get_attachment_url( $thumbnail_id ); 
+}
+
+?>
+
+<div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
                 <div class="welcome__message--2"><span>Monturen</span></div>
             </div>
 </div>
-
 
 <div class="container container--archive mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <div class="usp__container mx-auto d-flex flex-row justify-content-around p-5">

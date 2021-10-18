@@ -25,4 +25,17 @@ $().ready(()=> {
       $('.slick-next').html('<i class="fa-solid fa-chevron-right"></i>');
       $('.slick-prev').html('<i class="fa-solid fa-chevron-left"></i>');
 
+
+    $(".clickable").click(function(e) {
+        e.preventDefault();
+        window.location = $(this).find('a').attr('href');
+    });
+
+    $(".menu-toggle").click(function(e) {
+        $(".mobile__menu__overlay--container").css('left', '0');
+    });
+
+    $(".menu-close").click(function(e) {
+        $(".mobile__menu__overlay--container").css('left', '-100%');
+    });
 });

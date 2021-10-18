@@ -882,5 +882,35 @@ width: 100%;
     margin: 0!important;
     margin-bottom: 25px!important;
   }
+  .mobile__menu__overlay--container{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0);
+    position: absolute;
+    top: 0;
+    left: -100%;
+    z-index: 1050;
+    transition: all .3s ease-out;
+  }
+  .menu-close{
+    font-size: 25px;
+    color: #fff;
+  }
+
+  .mobile__menu__overlay--container ul{
+    list-style: none;
+  }
+  .mobile__menu__overlay--container ul li{
+    margin-top: 20px;
+  }
+  .mobile__menu__overlay--container ul li a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 25px;
+  }
+  .category__container .categories .category .button{
+    width: 65%;
+    top: 65%;
+  }
 }
 
