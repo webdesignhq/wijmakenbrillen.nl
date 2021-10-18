@@ -16,7 +16,7 @@ function website_setup()
 		'primary'   => __( 'Primary Menu', 'website' ),
 		'secondary' => __( 'Secondary Menu', 'website' ),
 		'footer_moreinfo' => __( 'Footer Meer informatie', 'website' ),
-		'footer_customerservice' => __( 'Footer Klantenservice', 'website' )
+		'footer_categories' => __( 'Footer Categorieën', 'website' )
 	) );
 	
 	if ( ! isset ( $content_width) )
@@ -31,8 +31,6 @@ function website_setup()
 	
 }
 endif; // website setup
-add_action( 'after_setup_theme', 'website_setup' );
-
 
 function website_custom_logo_setup() {
     $defaults = array(
@@ -48,5 +46,28 @@ add_action( 'after_setup_theme', 'website_custom_logo_setup' );
 
 
 add_theme_support( 'post-thumbnails' ); 
+add_theme_support('woocommerce');
+
+function cc_mime_types($mimes) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+   }
+   add_filter('upload_mimes', 'cc_mime_types');
+
+
+   add_filter('add_to_cart_custom_fragments', 'woocommerce_header_add_to_cart_custom_fragment');
+   function woocommerce_header_add_to_cart_custom_fragment( $cart_fragments ) {
+				   global $woocommerce;
+				   ob_start();
+				   ?>
+				   <a class="cart-contents" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('View   cart', 'woothemes'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'woothemes'), $woocommerce->cart->cart_contents_count);?> - <?php echo $woocommerce->cart->get_cart_total(); ?></a>
+				   <?php
+				   $cart_fragments['a.cart-contents'] = ob_get_clean();
+				   return $cart_fragments;
+   }
+
+
 
 ?>
+
+
