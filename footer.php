@@ -46,17 +46,18 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'footer_categories' ) ); ?>
 			</div>
 			<div class="col-lg-3 col-12">
-				<span>Mail ons je vraag</span>				
+				<span>Mail ons je vraag</span>		
+				<?php echo do_shortcode("[gravityform id='1' title='false' description='false' ajax='true' tabindex='49']"); ?>		
 			</div>
 		</div>
 	</div>
 	
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script src="/public/js/app.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
 </body>
 
 <?php wp_footer(); ?>

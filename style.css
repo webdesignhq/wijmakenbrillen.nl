@@ -281,7 +281,7 @@ header {
 }
 
 .welcome__message--1 {
-  margin-right: 155px;
+  width: 59%;
   background-color: rgba(58, 170, 53, 0.6);
 }
 
@@ -329,7 +329,6 @@ header {
 }
 .category__container .categories .category {
   background-size: cover;
-  padding-top: 22%;
   text-align: center;
   position: relative;
 }
@@ -341,6 +340,13 @@ header {
   font-family: "Courier New", Courier;
   text-decoration: none;
   color: #fff;
+  position: absolute;
+  top: 75%;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  width: 50%;
+  transition: all .2s ease-out;
 }
 .handmade__container {
   background-repeat: no-repeat;
@@ -637,6 +643,147 @@ margin-top: 50px;
   right: 40%; */
 }
 
+.single-thumbnails .woocommerce-product-gallery__image{
+width: 33.3%;
+}
+.single-thumbnails .woocommerce-product-gallery__image a img{
+object-fit: cover;
+height: 200px;
+width: 100%;
+}
+
+#footer .gform_fields .ginput_container  input, #footer .gform_fields .ginput_container  textarea {
+  width: 100%!important;
+  padding: 12px 15px;
+  margin-top: 20px!important;
+  background-color: #787878;
+  border: none;
+  color: #BFBFBF!important;
+}
+#footer .gform_fields .ginput_container  input::placeholder, #footer .gform_fields .ginput_container  textarea::placeholder {
+  color: #BFBFBF!important;
+  opacity: 1;
+}
+#footer .gform_fields .ginput_container  input:-ms-input-placeholder, #footer .gform_fields .ginput_container  textarea:-ms-input-placeholder {
+  color: #BFBFBF!important;
+}
+#footer .gform_fields .ginput_container  input::-ms-input-placeholder, #footer .gform_fields .ginput_container  textarea::-ms-input-placeholder {
+  color: #BFBFBF!important;
+}
+#footer .gform_fields .gfield, #footer .ginput_container{
+  margin-top: 0!important;
+  padding: 0!important;
+}
+
+#footer .textarea {
+  margin-top: 12px!important;
+}
+
+#footer .gform_fields{
+  padding: 0!important;
+}
+
+#footer .gform_body{
+  margin-top: 50px;
+}
+
+#footer .gform_footer input{
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(58, 170, 53);
+  color: #fff;
+  border: none;
+}
+
+.contact .gform_fields .ginput_container  input{
+  width: 100% !important;
+  margin-top: 0!important;
+}
+
+.contact .gform_footer input{
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(58, 170, 53);
+  color: #fff;
+  border: none;
+}
+
+.contact .img{
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.slider-for img{
+  max-height: 500px!important;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slick-next, .slick-prev{
+  background: transparent;
+  border: none;
+}
+
+.button__add--cart{
+  position: relative;
+}
+
+.button__add--cart a{
+  background-color: rgba(58, 170, 53);
+}
+
+.button__add--cart a::after {
+	content: "";
+	position: absolute;
+	top: 90%;
+  height: 2px;
+  width: 0%;
+  left: 8%;
+  background-color: rgba(0, 0, 0, 0.74);
+  transition: 0.3s ease all .3s;	
+}
+
+.button__add--cart:hover a::after{
+	width: 85%;
+  transition: 0.2s ease all;
+} 
+
+.category .overlay{
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  opacity: 0;
+  transition: all .3s ease-in;
+}
+
+.category:hover .overlay{
+  opacity: 1;
+  cursor: pointer;
+}
+
+.category:hover .button{
+  top: 65%!important;
+  background-color: rgba(58, 170, 53, 0.6)!important;
+}
+
+.category .hover__text{
+  position: absolute;
+  top: 87%;
+  left: 0;
+  right: 0;
+  color: #fff;
+  opacity: 0;
+  transition: all .3s ease-out;
+  font-size: 20px;
+}
+
+.category:hover .hover__text{
+  opacity: 1;
+}
+
 @media all and (max-width: 767px){
   .welcome__message {
     top: 45%;
@@ -729,4 +876,11 @@ margin-top: 50px;
     padding-right: 15px;
     padding-left: 15px;
   }
+  .archive__product{
+    max-width: 100%!important;
+    width: 100%!important;
+    margin: 0!important;
+    margin-bottom: 25px!important;
+  }
 }
+

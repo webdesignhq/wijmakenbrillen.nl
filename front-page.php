@@ -28,27 +28,33 @@ get_header();
                 <div class="categories d-lg-flex col-12 d-block flex-row justify-content-between mt-4">
                     <div class="col-lg-4 col-11 me-lg-2 mx-auto mt-3 category" style=" background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/dames_brillen.png');">
                         <!-- <a href="" class="button">Damesbrillen</a> -->
+                        <div class="overlay"></div>
 						<?php 
 							// if ( ! empty( $get_category_link ) ) {
 								echo '<a href="' . esc_url( get_category_link( 22 ) ) . '" class="button">' . esc_html( 'Damesbrillen' ) . '</a>';
 							// }
 						?>
+                        <span class="hover__text">bekijk alles</span>
                     </div>
                     <div class="col-lg-4 col-11 mx-lg-2 mx-auto mt-3 category" style= "background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/heren_brillen.png');">
                         <!-- <a href="#" class="button">Herenbrillen</a> -->
+                        <div class="overlay"></div>
 						<?php 
 							// if ( ! empty( $get_category_link ) ) {
 								echo '<a href="' . esc_url( get_category_link( 23 ) ) . '" class="button">' . esc_html( 'Herenbrillen' ) . '</a>';
 							// }
 						?>
+                        <span class="hover__text">bekijk alles</span>
                     </div>
                     <div class="col-lg-4 col-11 ms-lg-2 mx-auto mt-3 category" style=" background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/zonne_brillen.png');">
                         <!-- <a href="#" class="button">Zonnebrillen</a> -->
+                        <div class="overlay"></div>
 						<?php 
 							// if ( ! empty( $get_category_link ) ) {
 								echo '<a href="' . esc_url( get_category_link( 20 ) ) . '" class="button">' . esc_html( 'Zonnebrillen' ) . '</a>';
 							// }
 						?>
+                        <span class="hover__text">bekijk alles</span>
                     </div>
                 </div>
             </div>

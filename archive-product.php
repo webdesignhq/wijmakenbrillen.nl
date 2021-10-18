@@ -17,10 +17,10 @@ get_header();
                 <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/milieu.svg" alt="" /><span>Milieuvriendelijk</span></div>
                 <div class="seperator mx-4"></div>
                 <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/hand.svg" alt="" /><span>Handgemaakt</span></div>
-                <div class="seperator mx-4"></div>
-                <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/design.svg" alt="" /><span>Eigen design</span></div>
-                <div class="seperator mx-4"></div>
-                <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/factory.svg" alt="" /><span>Eigen productie</span></div>
+                <div class="seperator mx-4 d-lg-inline d-none"></div>
+                <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/design.svg" alt="" /><span>Eigen design</span></div>
+                <div class="seperator mx-4 d-lg-inline d-none"></div>
+                <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/factory.svg" alt="" /><span>Eigen productie</span></div>
             </div>
 
             <div class="category__container category__container--archive mx-auto">
@@ -30,11 +30,11 @@ get_header();
                 </p>
             </div>
 
-            <div class="collection__container archive__collection col-12 d-flex flex-row justify-content-between">
-                <div class="filter__container col-4">
+            <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between">
+                <div class="filter__container col-lg-4 col-12">
                 <p class="ms-5 ps-2 filter__title">Filters</p>
                 </div>
-                <div class="product__container col-8 px-5 my-5 d-flex flex-row flex-wrap justify-content-between">
+                <div class="product__container col-lg-8 col-12 px-lg-5 px-2 my-5 d-flex flex-row flex-wrap justify-content-lg-start justify-content-between">
 
                 <?php if (have_posts()) : ?>     
                 <?php

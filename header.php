@@ -24,6 +24,8 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	
 	<?php wp_head(); ?>	
 </head>
 
@@ -44,7 +46,7 @@
 		</div>
 		<div class="shop__controls col-lg-5 col-4 text-align-right d-inline-flex justify-content-lg-end justify-content-center mt-lg-0 mt-0">
 			<a href="#" class="mx-lg-3 ms-0 me-2 pt-3"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/heart.svg" /></a>
-			<a href="#" class="mx-lg-3 mx-2 pt-3"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/user.svg" /></a>
+			<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="mx-lg-3 mx-2 pt-3"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/user.svg" /></a>
 			<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Winkelwagen' ); ?>" class="mx-lg-3 mx-2 cart__icon d-inline-flex"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/shopping-cart.svg" />
 			<div class="cart__text pt-2 ps-3 d-lg-block d-none">
 				<!-- <?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> -->
