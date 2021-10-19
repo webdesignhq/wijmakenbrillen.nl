@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="mobile__menu__overlay--container d-lg-none">
+<div class="mobile__menu__overlay--container d-xl-none">
 	<div class="container p-4 d-flex flex-row justify-content-end">
 		<button class="menu-close btn mt-4" type="btn" onclick=""><i class="fas fa-close"></i></button>
 	</div>
