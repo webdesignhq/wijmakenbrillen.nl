@@ -18,7 +18,7 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<div class="cart_totals col-4 my-5 <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
+<div class="cart_totals col-4 my-3 <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
@@ -100,7 +100,14 @@ defined( 'ABSPATH' ) || exit;
 		</tr>
 
 		<?php do_action( 'woocommerce_cart_totals_after_order_total' ); ?>
-
+		<form class="woocommerce-cart-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
+		<?php if ( wc_coupons_enabled() ) { ?>
+				<div class="coupon mt-3 mb-4 d-flex flex-column">
+					<input type="text" name="coupon_code" class="input-text p-2 mb-2" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+					<?php do_action( 'woocommerce_cart_coupon' ); ?>
+				</div>
+		<?php } ?>
+		</form> 
 	</table>
 
 	<div class="wc-proceed-to-checkout">

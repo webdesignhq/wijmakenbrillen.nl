@@ -38,4 +38,21 @@ $().ready(()=> {
     $(".menu-close").click(function(e) {
         $(".mobile__menu__overlay--container").css('left', '-100%');
     });
+
+    var timeout;
+
+    $( function( $ ) {
+        $('.woocommerce').on('change', 'input.qty', function(){
+            $("[name='update_cart']").prop("disabled", false);
+            if ( timeout !== undefined ) {
+                clearTimeout( timeout );
+            }
+
+            timeout = setTimeout(function() {
+                $("[name='update_cart']").trigger("click");
+            }, 750 ); // 1 second delay, half a second (500) seems comfortable too
+
+        });
+    } );
+
 });

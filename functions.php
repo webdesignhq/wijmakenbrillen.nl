@@ -25,12 +25,15 @@ function website_setup()
 	add_theme_support( 'custom-header' );
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
-	add_theme_support( 'custom-background' );
-	
-
-	
+	add_theme_support( 'custom-background' );	
+	add_theme_support( 'post-thumbnails' ); 
+	add_theme_support('woocommerce');
+	add_theme_support( 'wc-product-gallery-slider' );
 }
 endif; // website setup
+add_action( 'after_setup_theme', 'website_setup' );
+
+
 
 function website_custom_logo_setup() {
     $defaults = array(
@@ -45,9 +48,7 @@ function website_custom_logo_setup() {
 add_action( 'after_setup_theme', 'website_custom_logo_setup' );
 
 
-add_theme_support( 'post-thumbnails' ); 
-add_theme_support('woocommerce');
-add_theme_support( 'wc-product-gallery-slider' );
+
 
 function cc_mime_types($mimes) {
 	$mimes['svg'] = 'image/svg+xml';
@@ -68,6 +69,7 @@ function woocommerce_header_add_to_cart_custom_fragment( $cart_fragments ) {
 }
 
 add_filter( 'woocommerce_single_product_carousel_options', 'sf_update_woo_flexslider_options' );
+
 /** 
  * Filer WooCommerce Flexslider options - Add Navigation Arrows
  */

@@ -79,7 +79,7 @@ while ( have_posts() ) : the_post();
                     <div class="col-lg-2 col-12 mx-0 category" >
                         <span>Hoogte glas</span>
                     </div>
-                    <div class="col-lg-2 col-12 ms-0 category" >                        <!-- <a href="#" class="button">Zonnebrillen</a> -->
+                    <div class="col-lg-2 col-12 ms-0 category" >                    
                         <span>Middenafstand</span>
                     </div>
                     <div class="col-lg-2 col-12 ms-0 category" >

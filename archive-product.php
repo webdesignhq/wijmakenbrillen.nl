@@ -1,6 +1,4 @@
 <?php
-/* Template Name: shoppage */
-
 get_header();
 ?>
 
@@ -18,9 +16,7 @@ if ( is_product_category() ){
     // get the image URL
     $image = wp_get_attachment_url( $thumbnail_id ); 
 }
-
 ?>
-
 <div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
