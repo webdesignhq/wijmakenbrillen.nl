@@ -99,18 +99,11 @@ do_action( 'woocommerce_before_cart' ); ?>
                                         	</div>
                                         </div>
                                         
-                                       
-                                </div>
-                                
-                                <hr  class="my-1"/>   
-
-                                <div class="row w-full product__controls justify-content-between px-lg-0 pt-2 px-2">
-                                    <div class="col-7 order__usp d-lg-block d-none"></div>
-                                    <div class="col-5 d-lg-inline-flex d-none justify-content-between">
                                         <div class="link d-inline-block ">
-                                            <a href="#"><i class="fas fa-heart pe-1"></i>Op verlanglijst</a>
+                                            <a href="#"><i class="fas fa-heart pe-1"></i></a>
                                         </div>
-                                        <div class="link d-inline-block">
+
+										<div class="link d-inline-block">
                                             <!-- <a href="#"><i class="fas fa-window-close pr-1"></i>Verwijderen</a> -->
 											<?php
 												echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -126,25 +119,14 @@ do_action( 'woocommerce_before_cart' ); ?>
 												);
 											?>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-5  justify-content-between d-lg-none d-inline-block col-3 px-0 pt-2 ps-2">
-                                        <div class="link d-inline-block text-center">
-                                            <!-- <a href="#"><img src="/assets/img/bin.svg" /><span class="d-block">Verwijderen</span></a> -->
-											<?php
-												echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-													'woocommerce_cart_item_remove_link',
-													sprintf(
-														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
-														esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
-														esc_html__( 'Remove this item', 'woocommerce' ),
-														esc_attr( $product_id ),
-														esc_attr( $_product->get_sku() )
-													),
-													$cart_item_key
-												);
-											?>
-                                        </div>
-                                    </div>
+
+										
+                                </div>
+                                
+                            
+
+                                <div class="row w-full product__controls justify-content-between px-lg-0 pt-2 px-2">
+                                    
                                     <div class="product__amount input-group inline-group fs-5 d-lg-none col-5 px-0 py-2 py-lg-0">
                                         <div class="input-group-prepend">
                                             <button class="btn btn-minus">

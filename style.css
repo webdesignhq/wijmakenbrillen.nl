@@ -691,9 +691,8 @@ width: 100%;
   border: 1px solid #ececec;
   border-radius: 15px;
 }
-
 .product img{
-  max-width: 200px!important;
+  /* max-width: 200px!important; */
 }
 .product a{
   color: #000;

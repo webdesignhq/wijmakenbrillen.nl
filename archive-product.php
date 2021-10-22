@@ -20,7 +20,7 @@ if ( is_product_category() ){
 <div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
-                <div class="welcome__message--2"><span>Monturen</span></div>
+                <div class="welcome__message--2"><span><?php  single_term_title(); ?></span></div>
             </div>
 </div>
 
@@ -36,7 +36,7 @@ if ( is_product_category() ){
             </div>
 
             <div class="category__container category__container--archive mx-auto">
-                <p class="category__headline"><?php wp_title(); ?></p>
+                <p class="category__headline"><?php single_term_title(); ?></p>
                 <p class="collection__desc mx-auto mt-4">
                 Speciaal voor jou hebben wij een super leuke en vrolijke collectie ontworpen met vrolijke kleuren.
                 </p>
@@ -115,7 +115,7 @@ if ( is_product_category() ){
                 </nav>
 
                  <?php else: ?>
-                <p>Sorry, no products matched your criteria.<p>
+                <p>Sorry, er zijn geen producten gevonden<p>
                     <?php endif ?>
 
                
