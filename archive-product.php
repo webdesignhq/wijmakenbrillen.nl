@@ -43,11 +43,41 @@ if ( is_product_category() ){
             </div>
 
             <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between">
-                <div class="filter__container col-lg-4 col-12">
-                <p class="ms-5 ps-2 filter__title">Filters</p>
+                <div id="filters" class="filter__container col-lg-4 col-12">
+                <!-- <p class="ms-5 ps-2 filter__title">Filters</p> -->
+                    <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12">
+                        <div class="d-flex flex-column col-12">
+                            <div class="col-12">
+                                <h2>Bedrag</h2>
+                                <input type="text" name="price_min" placeholder="Min price" />
+                                <input type="text" name="price_max" placeholder="Max price" />
+                            </div>
+                            <div class="col-12 d-flex flex-column">
+                                <h2>Sorteren</h2>
+                                <label>
+                                    <div class="input-container">
+                                    <input type="radio" name="date" value="ASC" /> Datum: Oplopend
+                                    <span class="mark"></span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <div class="input-container">
+                                        <input type="radio" name="date" value="DESC" selected="selected" /> Datum: Aflopend
+                                        <span class="mark"></span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="col-12 ">
+                                <input type="hidden" name="action" value="myfilter">
+                            </div>	
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary">Filters toepassen</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="product__container col-lg-8 col-12 px-lg-5 px-2 my-5 d-flex flex-row flex-wrap justify-content-lg-start justify-content-between">
-
+                <div class="product__container col-lg-8 col-12 px-lg-5 px-2 my-5 ">
+                    <div id="response" class="d-flex flex-row flex-wrap justify-content-lg-start justify-content-between">
                 <?php if (have_posts()) : ?>     
                 <?php
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
@@ -118,7 +148,7 @@ if ( is_product_category() ){
                 <p>Sorry, er zijn geen producten gevonden<p>
                     <?php endif ?>
 
-               
+                 </div>
                 
 
                 </div>

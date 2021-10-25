@@ -34,7 +34,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 					$product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
 					?>
 					
-					<div class="product w-full p-lg-3 mt-3">
+					<div class="product w-full p-lg-2 mt-3">
                                 <div class="product__field py-1">
                                         <div class="product__container col-12 d-lg-flex justify-content-start d-inline-flex align-items-center"> 
                                             <div class="image col-3 text-center d-lg-inline d-block">
@@ -99,17 +99,17 @@ do_action( 'woocommerce_before_cart' ); ?>
                                         	</div>
                                         </div>
                                         
-                                        <div class="link d-inline-block ">
+                                        <div class="link d-inline-block favorites">
                                             <a href="#"><i class="fas fa-heart pe-1"></i></a>
                                         </div>
 
-										<div class="link d-inline-block">
+										<div class="link d-inline-block remove">
                                             <!-- <a href="#"><i class="fas fa-window-close pr-1"></i>Verwijderen</a> -->
 											<?php
 												echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 													'woocommerce_cart_item_remove_link',
 													sprintf(
-														'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s">&times;</a>',
+														'<a href="%s" class="remove_link" aria-label="%s" data-product_id="%s" data-product_sku="%s"><i class="fa fa-trash fs-6"></i></a>',
 														esc_url( wc_get_cart_remove_url( $cart_item_key ) ),
 														esc_html__( 'Remove this item', 'woocommerce' ),
 														esc_attr( $product_id ),
