@@ -20,7 +20,7 @@ if ( is_product_category() ){
 <div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
-                <div class="welcome__message--2"><span><?php  single_term_title(); ?></span></div>
+                <div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
             </div>
 </div>
 
