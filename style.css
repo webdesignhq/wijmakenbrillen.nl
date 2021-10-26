@@ -481,14 +481,27 @@ header {
 }
 .collection__container .product__container .product {
   text-align: center;
-  border: solid 0.5px #707070;
+  border: solid 0.5px #f9f9f9;
   padding: 50px;
   background-color: #fff;
   margin-right: 5px;
   width: 20%;
   max-width: 20%;
   position: relative;
+  transition: 0.4s;
 }
+
+.collection__container .product__container .product:focus-visible {
+  border: solid 0.5px #f9f9f9;
+  transition: 0.4s;
+}
+
+.collection__container .product__container .product:hover {
+    box-shadow: 0 0 10px #ddd;
+    transition: 0.4s;
+    border: none;
+}
+
 .collection__container .product__container .product .product__favorites--button {
   text-align: right;
   color: #000;
