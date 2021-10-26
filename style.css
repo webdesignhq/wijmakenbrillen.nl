@@ -1006,6 +1006,7 @@ width: 100%;
   }
   .collection__container .product__container .product{
     max-width: 100%;
+    width: 100%;
     margin-bottom: 15px;
   }
   .fitting__container .img {
@@ -1061,6 +1062,7 @@ width: 100%;
     left: -100%;
     z-index: 1050;
     transition: all .3s ease-out;
+    position: fixed;
   }
   .menu-close{
     font-size: 25px;

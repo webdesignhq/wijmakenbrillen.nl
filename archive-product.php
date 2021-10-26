@@ -16,6 +16,12 @@ if ( is_product_category() ){
     // get the image URL
     $image = wp_get_attachment_url( $thumbnail_id ); 
 }
+
+if(is_search()){
+	global $wp_query;
+	$wp_query->is_search();
+}
+
 ?>
 <div class="hero" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
@@ -95,10 +101,10 @@ if ( is_product_category() ){
                             $cat = 21;
                         }
                     }
-                    else{
-                        $cat = array(20, 21, 22, 23);
-                    }
-
+                    // else{
+                    //     $cat = array(20, 21, 22, 23);
+                    // }
+                if($cat){
                     $args = array(
                         'post_type'      => 'product',
                         'posts_per_page' => 9,
@@ -111,6 +117,20 @@ if ( is_product_category() ){
                             )
                         )
                     );
+                }elseif(is_search()){
+					$s=get_search_query();
+					$args = array(
+									's' =>$s,
+									'post_type'      => 'product',
+									'posts_per_page' => 12,
+									'paged' => $paged
+								);
+				}else{
+					$args = array(
+						'post_type'      => 'product',
+						'posts_per_page' => 12,
+						'paged' => $paged
+				);}
 
                     $loop = new WP_Query( $args );
 
