@@ -17,7 +17,7 @@ if ( is_product_category() ){
     $image = wp_get_attachment_url( $thumbnail_id ); 
 }
 ?>
-<div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
+<div class="hero" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
                 <div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
