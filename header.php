@@ -57,7 +57,7 @@
 			</div>
 			</a>
 		</div>
-		<div class="d-md-none d-flex flex-row justify-content-between m-0 px-0 pt-2 text-uppercase">
+		<div class="d-lg-none d-flex flex-row justify-content-between m-0 px-0 pt-2 text-uppercase">
 			<div class="col-md-10 text-right"  id="menu">
 				<button class="menu-toggle btn" type="btn" onclick=""><i class="fas fa-bars"></i></button>
 				<nav id="site-navigation" class="main-navigation">

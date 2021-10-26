@@ -55,8 +55,8 @@ if(is_search()){
                         <div class="d-flex flex-column col-12">
                             <div class="col-12">
                                 <h2>Bedrag</h2>
-                                <input type="text" name="price_min" placeholder="Min price" />
-                                <input type="text" name="price_max" placeholder="Max price" />
+                                <input type="text" name="price_min" placeholder="Min. prijs" />
+                                <input type="text" name="price_max" placeholder="Max. prijs" />
                             </div>
                             <div class="col-12 d-flex flex-column mt-3">
                                 <h2>Sorteren</h2>

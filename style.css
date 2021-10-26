@@ -10,6 +10,7 @@
 /* Helpers */
 .container{
   max-width: 1812px!important;
+  
 }
 html, body, p{
   padding: 0;
@@ -890,14 +891,36 @@ width: 100%;
   float: left;
 }
 
+.woocommerce-MyAccount-navigation ul li:hover{
+  background-color: rgba(58, 170, 53);
+  transition: all .3s ease-in-out;
+}
+
 .woocommerce-MyAccount-navigation ul li a{
   display: block;
   padding: 16px;
   color: #fff;
 }
-.woocommerce-MyAccount-content header{
+.woocommerce-MyAccount-navigation header{
   background: transparent;
   padding: 15px 0;
+}
+
+.woocommerce .woocommerce-form a{
+  color: rgba(58, 170, 53)!important;
+}
+
+.woocommerce .woocommerce-MyAccount-content{
+  padding: 25px 50px;
+}
+
+.woocommerce .woocommerce-MyAccount-content a{
+  color: rgba(58, 170, 53)!important;
+}
+
+.woocommerce-Address .title{
+  background: transparent;
+  padding: unset;
 }
 
 /* Footer */
