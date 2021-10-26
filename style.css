@@ -32,6 +32,71 @@ input[type="text"], input[type="tel"], input[type="email"],input[type="password"
   border-color: #ececec;
   font-family: 'Roboto', sans-serif;
 }
+
+.input-container{
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.input-container input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.input-container .mark{
+  position: absolute;
+  top: 1px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+.input-container:hover input ~ .mark {
+  /* background-color: #ccc; */
+  transition: all .3s ease-out;
+}
+
+.input-container input:checked ~ .mark {
+  /* background-color: #2196F3; */
+  border: solid 1px rgba(58, 170, 53);
+}
+
+.input-container .mark:after {
+  content: "";
+  position: absolute;
+  /* display: none; */
+  transform: scale(0);
+  transition: all .2s ease-out;
+}
+
+.input-container input:checked ~ .mark:after {
+  /* display: block; */
+  transform: scale(1);
+}
+
+.input-container .mark:after {
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(58, 170, 53);
+}
+
+
 .woocommerce-form-coupon-toggle{
   display: none;
 }
@@ -552,6 +617,28 @@ header {
 .filter__title{
 	font-size: 35px;
   	font-family: "Courier New", Courier;
+}
+
+#filters input[type='text']{
+  background-color: #eee;
+  border: none;
+  padding: 10px;
+}
+
+#filters .btn{
+  width: 100%;
+  background-color: #000;
+  font-family: "Courier New", Courier;
+  border: none;
+  padding: 15px;
+  transition: all .3s ease-out;
+  font-size: 20px;
+  border-radius: 0px;
+}
+
+#filters .btn:hover{
+  background-color: #fff;
+  color: #000;
 }
 
 /* Single Product */

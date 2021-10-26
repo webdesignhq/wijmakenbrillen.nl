@@ -52,7 +52,7 @@ if ( is_product_category() ){
                                 <input type="text" name="price_min" placeholder="Min price" />
                                 <input type="text" name="price_max" placeholder="Max price" />
                             </div>
-                            <div class="col-12 d-flex flex-column">
+                            <div class="col-12 d-flex flex-column mt-3">
                                 <h2>Sorteren</h2>
                                 <label>
                                     <div class="input-container">
@@ -71,7 +71,7 @@ if ( is_product_category() ){
                                 <input type="hidden" name="action" value="myfilter">
                             </div>	
                         </div>
-                        <div class="col-12">
+                        <div class="col-8 mt-5">
                             <button class="btn btn-primary">Filters toepassen</button>
                         </div>
                     </form>
