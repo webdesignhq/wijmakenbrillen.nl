@@ -26,12 +26,29 @@ span{
 }
 a{
  text-decoration: none!important;
+ color: rgba(58, 170, 53);
 }
 input[type="text"], input[type="tel"], input[type="email"],input[type="password"], textarea{
   padding: 12px;
   border: 1px solid;
   border-color: #ececec;
   font-family: 'Roboto', sans-serif;
+}
+
+.gform_fields input, .gform_fields textarea{
+  padding: 12px 20px !important;
+}
+
+#dgwt-wcas-search-input-1{
+  padding: 25px;
+}
+#dgwt-wcas-search-input-1:focus .dgwt-wcas-ico-magnifier {
+  opacity: 0!important;
+}
+.dgwt-wcas-no-submit .dgwt-wcas-ico-magnifier{
+  left: 112px!important;
+  top: 2px;
+  transition: all .3s ease-in-out;
 }
 
 .input-container{
@@ -97,7 +114,6 @@ input[type="text"], input[type="tel"], input[type="email"],input[type="password"
   background: rgba(58, 170, 53);
 }
 
-
 .woocommerce-form-coupon-toggle{
   display: none;
 }
@@ -107,6 +123,9 @@ header {
   background-color: #393839;
   padding-left: 140px;
   padding-right: 140px;
+}
+.woocommerce-product-search{
+  width: 100%;
 }
 .shop__search input {
   width: 100%;
@@ -872,13 +891,17 @@ width: 100%;
 }
 
 /* WC Notices */
-.woocommerce-notices-wrapper{
-  max-width: 1150px;
-  margin-left: auto;
-  margin-right: auto;
+.woocommerce-notices-wrapper, .woocommerce-info{
+  max-width: 1250px!important;
+  margin-left: auto!important;
+  margin-right: auto!important;
+}
+.woocommerce-message::before{
+  color: rgba(58, 170, 53)!important;
 }
 .woocommerce-message{
-  border-radius: 10px;
+  border-radius: 0px;
+  border-top-color: rgba(58, 170, 53)!important;
 }
 
 /* My Account */
@@ -886,6 +909,7 @@ width: 100%;
   list-style-type: none;
   overflow: hidden;
   background-color: #393839;
+  margin-bottom: unset;
 }
 .woocommerce-MyAccount-navigation ul li{
   float: left;
@@ -910,6 +934,10 @@ width: 100%;
   color: rgba(58, 170, 53)!important;
 }
 
+.woocommerce .woocommerce-form a:hover{
+  color: #000!important;
+}
+
 .woocommerce .woocommerce-MyAccount-content{
   padding: 25px 50px;
 }
@@ -918,9 +946,17 @@ width: 100%;
   color: rgba(58, 170, 53)!important;
 }
 
+.woocommerce .woocommerce-MyAccount-content a:hover{
+  color: #000!important;
+}
+
 .woocommerce-Address .title{
   background: transparent;
   padding: unset;
+}
+
+.woocommerce .account-container{
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
 }
 
 /* Footer */
@@ -989,6 +1025,13 @@ width: 100%;
   background-color: rgba(58, 170, 53);
   color: #fff;
   border: none;
+}
+
+@media all and (max-width: 1024px){
+  header{
+    padding-left: 75px;
+    padding-right: 75px;
+  }
 }
 
 @media all and (max-width: 767px){

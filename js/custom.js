@@ -39,6 +39,10 @@ $().ready(()=> {
         $(".mobile__menu__overlay--container").css('left', '-100%');
     });
 
+    // $("#dgwt-wcas-search-input-1").focus(function(e) {
+    //     $(".dgwt-wcas-ico-magnifier").css('opacity', '0!important');
+    // });
+
     var timeout;
 
     $( function( $ ) {
