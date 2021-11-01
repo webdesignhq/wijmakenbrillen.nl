@@ -40,15 +40,15 @@
 							}
 			?>
 		</div>
-		<div class="shop__search col-lg-4 col-4 mt-lg-0 mt-4 d-lg-block d-none">
+		<div class="shop__search col-lg-4 col-4 mt-lg-0 mt-4 d-lg-flex flex-row d-none">
 			<!-- <form><input type="text" placeholder="Zoeken naar " class="search mx-auto py-2 px-4"/></form> -->
-			<?php get_search_form(); ?>
+			<?php echo do_shortcode('[fibosearch]'); ?>
 		</div>
-		<div class="shop__controls col-lg-5 col-4 text-align-right d-none d-lg-inline-flex justify-content-lg-end justify-content-center mt-lg-0 mt-0">
+		<div class="shop__controls col-lg-5 col-4 text-align-right d-none d-md-inline-flex justify-content-lg-end justify-content-center mt-lg-0 mt-0">
 			<a href="#" class="mx-lg-3 ms-0 me-2 pt-3"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/heart.svg" /></a>
 			<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" class="mx-lg-3 mx-2 pt-3"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/user.svg" /></a>
 			<a href="<?php echo wc_get_cart_url(); ?>" title="<?php _e( 'Winkelwagen' ); ?>" class="mx-lg-3 mx-2 cart__icon d-inline-flex"><img class="logo" src="<?php echo get_template_directory_uri(); ?>/assets/img/shopping-cart.svg" />
-			<div class="cart__text pt-2 ps-3 d-lg-block d-none">
+			<div class="cart__text pt-2 ps-3 d-md-block d-none">
 				<!-- <?php echo sprintf ( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count() ), WC()->cart->get_cart_contents_count() ); ?> -->
 				<p>Winkelwagen</p>
 				<p class="cart__amount">
@@ -66,8 +66,8 @@
 			</div>
 		</div>
 	</div>
-	<div class="d-lg-flex d-none flex-row justify-content-between m-0 px-0 pt-2 text-uppercase">
-			<div class="col-md-10 text-right"  id="menu">
+	<div class="d-md-flex d-none flex-row justify-content-between m-0 px-0 pt-2 text-uppercase">
+			<div class="col-md-12 text-right"  id="menu">
 				<button class="menu-toggle btn" type="btn" onclick=""><i class="fas fa-bars"></i></button>
 				<nav id="site-navigation" class="main-navigation">
 					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>

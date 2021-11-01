@@ -189,7 +189,14 @@ function filter_function(){
 	?>
 
 
+
+
 <?php
+
+add_filter( 'dgwt/wcas/form/magnifier_ico', function ( $html, $class ) {
+	$html = '<i class="fa fa-glasses ' . $class . '"></i>';
+	return $html;
+  }, 10, 2 );
 
 ?>
 

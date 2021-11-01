@@ -16,11 +16,17 @@ if ( is_product_category() ){
     // get the image URL
     $image = wp_get_attachment_url( $thumbnail_id ); 
 }
+
+if(is_search()){
+	global $wp_query;
+	$wp_query->is_search();
+}
+
 ?>
-<div class="hero" style="background-image: url(' <?php echo $image; ?>'); background-position: center;">
+<div class="hero" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Alle</span></div>
-                <div class="welcome__message--2"><span><?php  single_term_title(); ?></span></div>
+                <div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
             </div>
 </div>
 
@@ -49,10 +55,10 @@ if ( is_product_category() ){
                         <div class="d-flex flex-column col-12">
                             <div class="col-12">
                                 <h2>Bedrag</h2>
-                                <input type="text" name="price_min" placeholder="Min price" />
-                                <input type="text" name="price_max" placeholder="Max price" />
+                                <input type="text" name="price_min" placeholder="Min. prijs" />
+                                <input type="text" name="price_max" placeholder="Max. prijs" />
                             </div>
-                            <div class="col-12 d-flex flex-column">
+                            <div class="col-12 d-flex flex-column mt-3">
                                 <h2>Sorteren</h2>
                                 <label>
                                     <div class="input-container">
@@ -71,7 +77,7 @@ if ( is_product_category() ){
                                 <input type="hidden" name="action" value="myfilter">
                             </div>	
                         </div>
-                        <div class="col-12">
+                        <div class="col-8 mt-5">
                             <button class="btn btn-primary">Filters toepassen</button>
                         </div>
                     </form>
@@ -95,10 +101,10 @@ if ( is_product_category() ){
                             $cat = 21;
                         }
                     }
-                    else{
-                        $cat = array(20, 21, 22, 23);
-                    }
-
+                    // else{
+                    //     $cat = array(20, 21, 22, 23);
+                    // }
+                if($cat){
                     $args = array(
                         'post_type'      => 'product',
                         'posts_per_page' => 9,
@@ -111,6 +117,20 @@ if ( is_product_category() ){
                             )
                         )
                     );
+                }elseif(is_search()){
+					$s=get_search_query();
+					$args = array(
+									's' =>$s,
+									'post_type'      => 'product',
+									'posts_per_page' => 12,
+									'paged' => $paged
+								);
+				}else{
+					$args = array(
+						'post_type'      => 'product',
+						'posts_per_page' => 12,
+						'paged' => $paged
+				);}
 
                     $loop = new WP_Query( $args );
 
