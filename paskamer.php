@@ -15,7 +15,7 @@ get_header();
 <div class="absoluteVP3"><img id="Fplaat" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png" width="600" height="300"></div>
 </div>
 <h5><strong>€  <span id="Totaal">169</span>,00</strong></h5>
-<input type="textaread" style='width:100%' id="Model" size="120" value="Dit is model Anna met een zwarte acetaat plaat, "/></a>
+<input type="textarea" style='width:100%' id="Model" size="120" value="Dit is model Anna met een zwarte acetaat plaat, "/></a>
 <p><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar de gegevens van het gekozen model te gaan.</a></p>
 <p id="demoA">(Gekozen model voor snelkoppeling: Anna zwart)</p>
 <div class="container">
@@ -23,7 +23,7 @@ get_header();
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><p>Andere modellen</p><input type="textaread" style='width:100%' id="Model" size="120" value=""/></a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><p>Andere modellen</p><input type="textarea" style='width:100%' id="Model" size="120" value=""/></a>
         </h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse in">
@@ -48,7 +48,7 @@ get_header();
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><p>Kleuren acetaat</p></h4></p><input type="textaread" style='width:100%' id="mal" size="120" value="Anna heeft 6 verschillende acetaat platen"</strong></a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2"><p>Kleuren acetaat</p></h4></p><input type="textarea" style='width:100%' id="mal" size="120" value="Anna heeft 6 verschillende acetaat platen"</strong></a>
         </h4>
       </div>
       <div id="collapse2" class="panel-collapse collapse">
@@ -198,13 +198,13 @@ get_header();
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Kleur glazen</p></h4></p><input type="textaread" style='width:100%' id="MGlas" size="120" value="zonder glas"</strong></a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Kleur glazen</p></h4></p><input type="textarea" style='width:100%' id="MGlas" size="120" value="zonder glas"</strong></a>
         </h4>
       </div>
       <div id="collapse3" class="panel-collapse collapse">
         <div class="panel-body">
              <div class="flex-container">
-           <div><img class="img-rounded" style="float: left;" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/G1.png" alt="" width="40" height="40" onmouseover="glazenAA();"/></div>
+           <div><img class="img-rounded" style="float: left;" src="http://localhost/wijmakenbrillen.nl/wp-content/uploads/2021/10/G1.png" alt="" width="40" height="40" onmouseover="glazenAA();"/></div>
             <div><img class="img-rounded" style="float: left;" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/G2.png" alt="" width="40" height="40" onmouseover="glazenAB();"/></div>
             <div><img class="img-rounded" style="float: left;" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/G3.png" alt="" width="40" height="40" onmouseover="glazenAC();"/></div>
             <div><img class="img-rounded" style="float: left;" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/G4.png" alt="" width="40" height="40" onmouseover="glazenAD();"/></div>
@@ -2243,6 +2243,12 @@ function zus07() {
 </script>
 
 <style>
+
+.collapse:not(.show) {
+	display: block;
+}
+
+
 .table-wrapC {
   height: 120px;
   overflow-y: scroll;
