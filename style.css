@@ -614,6 +614,50 @@ header {
   margin-bottom: 25px;
 }
 
+
+/* Camera */
+
+#camera, #camera--view, #camera--sensor, #camera--output{
+    position: fixed;
+    height: 270px;
+    width: 300px;
+    object-fit: cover;
+}#camera--view, #camera--sensor, #camera--output{
+    transform: scaleX(-1);
+    filter: FlipH;
+}#camera--trigger{
+    width: 200px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    border-radius: 30px;
+    border: none;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    position: fixed;
+    bottom: 380px;
+   /* left: calc(50% - 100px); */
+	
+}
+
+#previewimage {
+	position: absolute;
+	z-index: 10;
+	width: 300px;
+    height: 200px;
+}
+
+.taken{
+    height: 270px;
+    width: 300px;
+    transition: all 0.5s ease-in;
+    border: solid 0px white;
+    box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2);
+
+    z-index: 2;
+}
+
 /* Archive */
 .container--archive{
 	background-size: 66%;

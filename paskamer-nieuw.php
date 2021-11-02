@@ -6,12 +6,27 @@
    <div class="row">
       <!-- <button class="button" onmouseover="history.back()">Terug</button> -->
       <div class="formRow">
-         <div class="formSpan12">
-            <div class="relativeVP">
-               <div class="absoluteVP1"><iframe src="https://www.wijmakenbrillen.nl/camera-vp/" width="300" height="700" title="description" frameborder="0"></iframe></div>
-               <div class="absoluteVP2"><img src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png" alt="Plaat" width="100%" height="300" /></div>
-               <div class="absoluteVP3"><img id="previewimage" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png" width="600" height="300"></div>
+         <div class="formSpan12 row">
+		<div class="col-lg-6">
+			   <div class="relativeVP">
+				<main id="camera">
+						<!-- Camera sensor -->
+						<canvas id="camera--sensor"></canvas>
+						<!-- Camera view -->
+						<video id="camera--view" autoplay="" playsinline=""></video>        
+						<!-- Camera trigger -->
+						<button id="camera--trigger">Maak een foto</button>
+						<!-- Camera output -->
+				  <!-- <div class="absoluteVP1"> </div> -->
+
+				   <div class="absoluteVP2"><img src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png" alt="Plaat" width="100%" height="300" /></div>
+				   
+				   <div class="absoluteVP3"><img src="//:0" alt="" id="camera--output"> <img id="previewimage" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png">
+				   </div>
+				</main> 
             </div>
+		</div>
+		<div class="col-lg-6">
             <h5><strong>€  <span id="Totaal">169</span>,00</strong></h5>
             <input type="textaread" style='width:100%' id="Model" size="120" value="Dit is model Anna met een zwarte acetaat plaat, "/></a>
             <p><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar de gegevens van het gekozen model te gaan.</a></p>
@@ -58,7 +73,7 @@
 											<?php	foreach ( $variations as $key => $value ) {
 												?>
 												<div class="d-flex flex-column" style=" float: left;">
-													<img data-title="<?php echo $product->name ;?>" data-color="<?php echo $value['attributes']['attribute_pa_kleur']?>" style="width: 100px" src="<?php echo $value['image']['gallery_thumbnail_src']; ?>" class="product__image mx-auto" onclick="getModel(this)" onmouseover="modelAA();myannaB();"/>
+													<img data-title="<?php echo $product->name ;?>" data-color="<?php echo $value['attributes']['attribute_pa_kleur']?>" style="width: 100px" src="<?php echo $value['image']['gallery_thumbnail_src']; ?>" class="product__image mx-auto" onclick="getModel(this)"/>
 												</div>
 											<?php
 												} ?>
@@ -106,6 +121,7 @@
                   </div>
                </div> -->
             </div>
+			</div>
          </div>
       </div>
    </div>
@@ -359,13 +375,14 @@
    overflow-y: scroll;
    display: inline-block;
    }
-   div.relativeVP {
+   
+   .relativeVP {
    position: relative;
    width: 300px;
    height: 700px;
    border: 0px solid #73AD21;
    }
-   div.absoluteVP1 {
+   .absoluteVP1 {
    position: absolute;
    top: 0px;
    left: 10px;
@@ -373,23 +390,29 @@
    height: 700px;
    border: 0px solid #73AD21;
    }
-   div.absoluteVP2 {
+   .absoluteVP2 {
    position: absolute;
    top: 0px;
    left: 10px;
    width: 300px;
-   height: 250px;
+   height: 200px;
    border: 0px solid #73AD21;
    }
-   div.absoluteVP3 {
+   
+   .absoluteVP2 img {
+	width: 300px;
+	height: 200px;
+   }
+   
+   .absoluteVP3 {
    position: absolute;
    top: 350px;
-   left: 10px;
    width: 300px;
    height: 250px;
    border: 0px solid #73AD21;
    }
-   div.absoluteVP4 {
+   
+   .absoluteVP4 {
    position: absolute;
    top: 170px;
    left: 75%;
