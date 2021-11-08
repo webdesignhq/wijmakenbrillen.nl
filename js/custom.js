@@ -1,5 +1,5 @@
 $().ready(()=> {
-    console.log('reaedy')
+    console.log('ready')
 
     $('.slider-for').slick({
         slidesToShow: 1,
@@ -104,4 +104,32 @@ $().ready(()=> {
 
 
 
+
 });
+
+
+	 // Display variations on digital fitting room
+   function showVariations(name) {
+      $("div").find(`[data-modelgroup]`).hide();
+      $("div").find(`[data-modelgroup='${name}']`).show();
+   }
+
+   function showGlasses(glasses) {
+      var decoded = JSON.parse(glasses);
+      $(".glass-colors").hide();
+      decoded.forEach(function(glass) {
+         $(`.glass-colors[data-id='${glass}']`).show();
+      });
+   }
+
+   function getModel(model) {
+      var modelTitle = $(model).attr("data-title");
+      var modelColor = $(model).attr("data-color");
+      var modelImage = $(model).attr("src");
+      var modelGlasses = $(model).attr("data-glasses");
+      // document.getElementById("myAnchorA").href = "https://www.wijmakenbrillen.nl/product/anna-zwart/";
+      document.getElementById("previewtext").innerHTML = "<h5>(Gekozen model: " + modelTitle + " - " + modelColor + ")</h5>";
+      $('#previewimage').attr("src", modelImage);
+      showVariations(modelTitle);
+      showGlasses(modelGlasses);
+   }
