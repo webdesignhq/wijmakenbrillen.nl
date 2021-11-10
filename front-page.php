@@ -24,7 +24,8 @@ get_header();
             </div>
 
 			<div class="category__container mx-auto">
-                <p class="category__headline">Waar ben je naar op zoek?</p>
+                <p class="category__headline">Laat je ogen spreken </p>
+				<p>In huis ontworpen en geproduceerde monturen, in verschillende stijlen en geschikt voor iedere gelegenheid.  Ontdek onze kleurrijke collectie brilmonturen en laat je ogen spreken. Een bril online kopen is nog nooit zo leuk geweest. Leverbaar vanaf 169,- inclusief ontspiegelde glazen op sterkte.</p>
                 <div class="categories d-lg-flex col-12 d-block flex-row justify-content-between mt-4">
                     <div class="col-lg-4 col-11 me-lg-2 mx-auto mt-3 category clickable" style=" background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/dames_brillen.png');">
                         <!-- <a href="" class="button">Damesbrillen</a> -->
@@ -63,12 +64,13 @@ get_header();
 <div class="handmade__container d-lg-flex d-block flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/usp_bg.svg);">
             <div class="usp col-lg-5 col-12 offset-lg-1 offset-0">
                 <p>100% handgemaakt</p>
-                <ul>
-                    <li>Milieuvriendelijk</li>
-                    <li>Productie in Nederland</li>
-                    <li>Eigen design</li>
-                    <li>Vrolijke collectie</li>
-                </ul>
+                <div class="mt-5">
+					Onze vrolijke en lichte brillen zijn vervaardigd in onze eigen atelier in Hoogeveen.
+De lage prijzen zijn mogelijk doordat wij de gehele collectie zelf produceren.
+Hierdoor kunnen we snel op de laatste trends in spelen.  
+Ben je nieuwsgierig? Kijk dan op onze “over ons pagina”
+
+				</div>
             </div>
             <div class="usp__image col-lg-6 col-12">
                 <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/dames_brillen.png');"></div>
@@ -78,7 +80,9 @@ get_header();
 <div class="collection__container">
             <div class="col-12 text-center">
                 <h2>Onze collectie</h2>
-                <p class="collection__desc mx-auto mt-4">Speciaal voor jou hebben wij een super leuke en vrolijke collectie ontworpen met vrolijke kleuren.</p>
+                <p class="collection__desc mx-auto mt-4">Onze brillen zijn gemaakt van acetaat en hebben een smallere rand en is daardoor lichter.
+De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speciaal geselecteerde kleuren acetaat zijn de monturen voor elke gelegenheid geschikt
+</p>
             </div>
 
 			<div class="product__container col-12 px-5 my-5 d-lg-flex d-block flex-row">
@@ -131,9 +135,11 @@ get_header();
             <div class="fitting__info col-lg-5 col-12 offset-lg-1 offset-0">
                 <p class="fitting__title">Digitale paskamer</p>
                 <div class="fitting__desc">
-                    <p>Wil je weten hoe de maat is? hoe leuk brillen staan? of als zonnebril?</p>
-                    <br />
-                    <p>Bekijk dan onze brillen in onze digitale spiegel</p>
+                    <p>Wil jij weten hoe leuk onze brillen staan? 
+					Of wil je ze zien met zonnebrilglazen?
+					Je kan ze bekijken in onze digitale paskamer.
+					Ook de maten kan je hier bekijken.
+					</p>
                 </div>
             </div>
 </div>
