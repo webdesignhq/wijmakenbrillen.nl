@@ -44,7 +44,7 @@ if(is_search()){
             <div class="category__container category__container--archive mx-auto">
                 <p class="category__headline"><?php single_term_title(); ?></p>
                 <p class="collection__desc mx-auto mt-4">
-                Speciaal voor jou hebben wij een super leuke en vrolijke collectie ontworpen met vrolijke kleuren.
+                 <?php echo category_description(); ?>
                 </p>
             </div>
 
