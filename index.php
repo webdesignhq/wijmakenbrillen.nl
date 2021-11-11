@@ -1,8 +1,7 @@
 <?php get_header(); ?>
-<div id="content" class="py-5">
-	<div class="row content">
-		<div class="medium-12 columns">
-			<div class="columns">
+<div id="content">
+	<div class="flex-row d-flex">
+		<div class="d-flex col-12">
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 							 
 				<?php the_content(); ?>
@@ -18,8 +17,7 @@
 				 
 				<?php posts_nav_link(); ?>
 			</div>
-		
-		</div>
+	
 	</div>	
 </div>	
 <?php

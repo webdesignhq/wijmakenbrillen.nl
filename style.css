@@ -24,6 +24,11 @@ overflow-x: hidden;
 span{
   font-family: "Courier New", sans-serif;
 }
+
+p {
+	line-height: 30px;
+}
+
 a{
  text-decoration: none!important;
  color: rgba(58, 170, 53);
