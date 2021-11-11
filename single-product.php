@@ -40,7 +40,27 @@ while ( have_posts() ) : the_post();
             <div class="product__price--container row mt-4">
                 <div class="col-8 d-flex flex-column">
                     <span class="product__price">Beschikbare kleuren</span>
-                    <span class="product__price">[COLORS]</span>
+                    <div class="d-flex">
+												<?php 
+							$attributes = $product->get_attributes();
+							$terms = get_the_terms( $product->id, 'pa_kleur');
+							
+							foreach($terms as $term){
+								$singleID = $term->term_id;
+								$singleTax = $term->taxonomy;
+								
+								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+								
+								if($hex == ''){
+									$hex = '#000';
+								};
+								
+								?>
+						 		<div class="mx-1" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+						 <?php
+							}
+						?>
+					</div>
                 </div>
                 <div class="col-4">
                     <span class="product__price--single"><?php echo $product->get_price_html(); ?></span>
