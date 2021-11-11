@@ -107,12 +107,30 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <p class="product__color--name"><?php the_title() ?></p>
-                    <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
-                    </div>
+                   	 <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
+						<?php 
+							$attributes = $product->get_attributes();
+							$terms = get_the_terms( $product->id, 'pa_kleur');
+							
+							foreach($terms as $term){
+								$singleID = $term->term_id;
+								$singleTax = $term->taxonomy;
+								
+								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+								
+								if($hex == ''){
+									$hex = '#000';
+								};
+								
+								?>
+						 		<div style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+						 <?php
+							}
+						?>
+						
+						 
+						</div>
+					
                     <span class="product__price"><?php echo $product->get_price_html();  ?></span>
                     <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
                 	</div>
@@ -125,9 +143,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
             <div class="text-end px-5">
                 <a href="/wijmakenbrillen.nl/shop" class="text-uppercase button p-3">Bekijk alles</a>
             </div>
-
 </div>
-
 <div class="fitting__container d-lg-flex d-block flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/paskamer_bg.svg);">
             <div class="fitting__image col-lg-6 col-12">
                 <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/fitting.png');"></div>

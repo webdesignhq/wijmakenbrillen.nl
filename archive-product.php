@@ -151,7 +151,7 @@ if(is_search()){
                         <div class="product__color"></div>
                         <div class="product__color"></div>
                     </div>
-                    <span class="product__price"><?php echo $product->get_price_html();  ?></span>
+                    <span class="product__price"><?php if($product->get_price_htmL()){ echo $product->get_price_html(); } else { echo '€0.01'; } ?></span>
                     <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
                 </div>
 

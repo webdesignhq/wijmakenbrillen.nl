@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 ?>
-<div class="container">
+<div class="container-xxl">
     <div class="row mt-5">
 <?php
 while ( have_posts() ) : the_post();
@@ -22,11 +22,11 @@ while ( have_posts() ) : the_post();
 ?>
 
 
-        <div class="col-lg-6 col-12 product__images--container text-center px-5">
+        <div class="col-lg-6 col-12 product__images--container text-center px-5 my-5">
             <!-- <img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image product__image--single mx-auto" /> -->
            <?php do_action('woocommerce_before_single_product_summary'); ?>
         </div>
-        <div class="col-lg-4 col-11 mx-auto mx-lg-0 product__info--container">
+        <div class="col-lg-5 col-11 mx-auto mx-lg-0 product__info--container">
             <div class="row">
                 <div class="col-11">
                     <p class="product__category__title--single"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
@@ -50,16 +50,16 @@ while ( have_posts() ) : the_post();
                 <span class="product__price">Selecteer je glazen</span>
                 <span class="product__price">[OPTIONS]</span>
             </div>
-            <div class="product__cta--container row d-flex flex-row mt-5">
-                <div class="col-4"><span class="product__price--cta"><a href="#">Passen</a></span></div>
-                <div class="col-8 d-flex justify-content-end"><span class="product__price--cta button__add--cart"><?php echo '<a href="'. $checkout_url.'?add-to-cart=' .$productID. '">'?>In Winkelwagen</a></span></div>
+            <div class="product__cta--container col-12 d-flex flex-row justify-content-start mt-5">
+                <span class="product__price--cta me-3"><a href="#">Passen</a></span>
+                <span class="product__price--cta button__add--cart"><?php echo '<a href="'. $checkout_url.'?add-to-cart=' .$productID. '">'?>In Winkelwagen</a></span>
             </div>
         </div>
 </div>
 </div>
         <div class="handmade__container handmade__container--single  d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
             <div class="usp col-5 offset-1">
-                <h2>[COLLECTION_TITLE]</h2>
+            <h2 class="text-uppercase">Wintercollectie</h2>
                 <p>
                     Lorem ipsum dolor sit amet vultekst voor collectie informatie. Lorem ipsum dolor sit amet vultekst voor collectie informatie.
                     Lorem ipsum dolor sit amet vultekst voor collectie informatie.
@@ -93,7 +93,7 @@ while ( have_posts() ) : the_post();
 
         <div class="handmade__container handmade__container--single  d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
             <div class="usp col-5 offset-1">
-                <h2>[FITTING_ROOM_TITLE]</h2>
+                <h2 class="text-uppercase">Virtuele Paskamer</h2>
                 <p>
                     Lorem ipsum dolor sit amet vultekst voor collectie informatie. Lorem ipsum dolor sit amet vultekst voor collectie informatie.
                     Lorem ipsum dolor sit amet vultekst voor collectie informatie.
@@ -106,7 +106,23 @@ while ( have_posts() ) : the_post();
 
         <div class="category__container size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <p class="product__category__title--single"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
-            <p>[PRODUCT CATEGORY DESC]</p>    
+            <p>
+                <?php 
+                    global $post;
+                    $args  = array(
+                        'taxonomy' => 'product_cat'
+                    );
+                    $terms = wp_get_post_terms($post->ID, 'product_cat', $args);
+                    
+                    $count = count($terms);
+                    if ($count > 0) {
+                    
+                        foreach ($terms as $term) {
+                            echo $term->description;
+                        }
+                    }
+                ?>
+            </p>    
         </div>	
 
         <div class="fitting__container fitting__container--single d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">

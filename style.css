@@ -862,14 +862,17 @@ header {
   font-family: "Roboto", sans-serif;
 }
 .product__category__title--single a{
-  font-size: 32px;
+  font-size: 24px;
   font-family: "Courier New", Courier;
   color: #000;
   text-decoration: none!important;
   display: inline;
 }
+.product__info--container .product__color--name{
+  font-size: 28px;
+}
 .product__price--single span{
-  font-size: 48px;
+  font-size: 32px;
   color: #000;
   font-family: "Roboto", sans-serif;
 }
@@ -905,9 +908,9 @@ margin-top: 50px;
   margin-bottom: -150px;
 }
 .product__price--cta a{
-  padding: 20px 22px;
+  padding: 10px 12px;
   background-color: rgba(0, 0, 0, 0.74);
-  font-size: 35px;
+  font-size: 28px;
   font-family: "Courier New", Courier;
   color: #fff;
   display: inline;
@@ -915,9 +918,9 @@ margin-top: 50px;
   text-decoration: none;
 }
 .button__add--cart a{
-  padding: 20px 22px;
+  padding: 10px 12px;
   background-color: rgba(58, 170, 53);
-  font-size: 35px;
+  font-size: 28px;
   font-family: "Courier New", Courier;
   color: #fff;
   display: inline;
@@ -925,15 +928,18 @@ margin-top: 50px;
   text-decoration: none;
   position: relative;
 }
+.button__add--cart a:hover{
+  /* background-color: #393839; */
+}
 .button__add--cart a::after {
 	content: "";
 	position: absolute;
 	top: 75%;
   height: 2px;
   width: 0%;
-  left: 8%;
+  left: 6%;
   background-color: #393839;
-  transition: 0.3s ease all .3s;	
+  transition: .3s ease all .3s;
 }
 .button__add--cart:hover a::after{
 	width: 66%;
@@ -948,15 +954,26 @@ width: 33.3%;
 }
 .single-thumbnails .woocommerce-product-gallery__image a img{
 object-fit: cover;
-height: 200px;
+height: 100px!important;
 width: 100%;
 }
 .slick-prev, .slick-next{
   background: transparent;
   border: none;
 }
-.slick-list img{
-  height: 400px;
+.slider-nav .slick-list img{
+  height: 125px;
+  /* width: 125px!important; */
+  margin: 0 5px;
+  border: solid 1px #393839;
+  object-fit: contain;
+}
+/* .slider-nav .slick-list .slick-active {
+  border: solid 1px #000;
+} */
+
+.slider-for .slick-list img{
+  height: 250px;
   object-fit: cover;
 }
 
