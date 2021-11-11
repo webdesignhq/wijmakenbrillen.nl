@@ -146,10 +146,25 @@ if(is_search()){
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <p class="product__color--name"><?php the_title() ?></p>
                     <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
-                        <div class="product__color"></div>
+                    <?php 
+							$attributes = $product->get_attributes();
+							$terms = get_the_terms( $product->id, 'pa_kleur');
+							
+							foreach($terms as $term){
+								$singleID = $term->term_id;
+								$singleTax = $term->taxonomy;
+								
+								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+								
+								if($hex == ''){
+									$hex = '#000';
+								};
+								
+								?>
+						 		<div style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+						 <?php
+							}
+						?>
                     </div>
                     <span class="product__price"><?php if($product->get_price_htmL()){ echo $product->get_price_html(); } else { echo '€0.01'; } ?></span>
                     <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
