@@ -82,6 +82,7 @@ while ( have_posts() ) : the_post();
                 <span class="product__price">Selecteer je glazen</span>
                 <span class="product__price">[OPTIONS]</span>
             </div>
+			<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
             <div class="product__cta--container col-12 d-flex flex-row justify-content-start mt-5">
                 <span class="product__price--cta me-3"><a href="#">Passen</a></span>
                 <span class="product__price--cta button__add--cart"><?php echo '<a href="'. $checkout_url.'?add-to-cart=' .$productID. '">'?>In Winkelwagen</a></span>

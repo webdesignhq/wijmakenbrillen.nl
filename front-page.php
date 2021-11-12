@@ -102,7 +102,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 
 				<div class="product d-flex flex-column">
                     <span class="product__sale--flag"></span>
-                    <a href="#" class="product__favorites--button"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+					<span class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></span>
                     <!-- <img src="/assets/img/product.png" alt="" /> -->
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
@@ -191,7 +191,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <p class="product__color--name"><?php the_title() ?></p>
                     <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-                    <?php 
+       						<?php 
 							$attributes = $product->get_attributes();
 							$terms = get_the_terms( $product->id, 'pa_kleur');
 							

@@ -38,7 +38,7 @@ get_header();
 
                                     $args = array(
                                        'post_type'      => 'product',
-                                       'posts_per_page' => 9,
+                                       'posts_per_page' => -1,
                                        'paged' => $paged
                                     );
 									

@@ -24,10 +24,10 @@ if(is_search()){
 
 ?>
 <div class="hero" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
-            <div class="welcome__message d-flex flex-column">
-                <div class="welcome__message--1"><span>Alle</span></div>
-                <div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
-            </div>
+	<div class="welcome__message d-flex flex-column">
+		<div class="welcome__message--1"><span>Alle</span></div>
+		<div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
+	</div>
 </div>
 
 <div class="container container--archive mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
@@ -40,20 +40,18 @@ if(is_search()){
                 <div class="seperator mx-4 d-lg-inline d-none"></div>
                 <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/factory.svg" alt="" /><span>Eigen productie</span></div>
             </div>
-
-            <div class="category__container category__container--archive mx-auto">
+            <div class="category__container category__container--archive mx-auto col-6 ">
                 <p class="category__headline"><?php single_term_title(); ?></p>
                 <p class="collection__desc mx-auto mt-4">
-                 <?php echo category_description(); ?>
+                	<?php echo category_description(); ?>
                 </p>
             </div>
-
             <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between">
                 <div id="filters" class="filter__container col-lg-4 col-12">
                 <!-- <p class="ms-5 ps-2 filter__title">Filters</p> -->
                     <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12">
                         <div class="d-flex flex-column col-12">
-                            <div class="col-12">
+                           <div class="col-12">
                                 <h2>Bedrag</h2>
                                 <input type="text" name="price_min" placeholder="Min. prijs" />
                                 <input type="text" name="price_max" placeholder="Max. prijs" />
@@ -87,6 +85,7 @@ if(is_search()){
                             <div class="col-12 ">
                                 <h2>Vorm</h2>
                             </div>	
+
                             <div class="col-12 d-flex flex-column mt-3">
                                 <h2>Sorteren</h2>
                                 <label>
@@ -175,7 +174,7 @@ if(is_search()){
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <p class="product__color--name"><?php the_title() ?></p>
                     <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-                    <?php 
+                       						<?php 
 							$attributes = $product->get_attributes();
 							$terms = get_the_terms( $product->id, 'pa_kleur');
 							
@@ -195,7 +194,7 @@ if(is_search()){
 							}
 						?>
                     </div>
-                    <span class="product__price"><?php if($product->get_price_htmL()){ echo $product->get_price_html(); } else { echo '€0.01'; } ?></span>
+                    <span class="product__price"><?php echo $product->get_price_html();  ?></span>
                     <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
                 </div>
 
