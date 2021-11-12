@@ -827,13 +827,22 @@ header {
 }
 .filter__title{
 	font-size: 35px;
-  	font-family: "Courier New", Courier;
+  font-family: "Courier New", Courier;
 }
 
 #filters input[type='text']{
   background-color: #eee;
   border: none;
   padding: 10px;
+}
+
+#filters input[type="checkbox"]{
+  position: absolute;
+  height: 0;
+  width: 0;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 
 #filters .btn{

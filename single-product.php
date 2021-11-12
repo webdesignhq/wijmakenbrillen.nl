@@ -22,7 +22,7 @@ while ( have_posts() ) : the_post();
 ?>
 
 
-        <div class="col-lg-6 col-12 product__images--container text-center px-5 my-5">
+        <div class="col-lg-6 col-12 product__images--container text-center px-5 mb-5">
             <!-- <img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image product__image--single mx-auto" /> -->
            <?php do_action('woocommerce_before_single_product_summary'); ?>
         </div>
@@ -41,14 +41,26 @@ while ( have_posts() ) : the_post();
                 <div class="col-8 d-flex flex-column">
                     <span class="product__price">Beschikbare kleuren</span>
                     <div class="d-flex">
-												<?php 
-							$attributes = $product->get_attributes();
-							$terms = get_the_terms( $product->id, 'pa_kleur');
+						<?php 
+							$post = get_post();
+							$id =  $post->ID;
+							$product_variations = new WC_Product_Variable( $id );
+							$product_variations = $product_variations->get_available_variations();
 							
+							 foreach ($product_variations as $variation){
+								 $var_id = $variation['variation_id'];
+								 $color = $variation['attributes']['attribute_pa_kleur'];
+								 $color_b;
+								 
+								 echo $var_id; ?> <br/> <?php 
+								 echo $color_b; ?> <br/> <?php 
+							 }
+							
+							$terms = get_the_terms( $product->id, 'pa_kleur');
 							foreach($terms as $term){
 								$singleID = $term->term_id;
 								$singleTax = $term->taxonomy;
-								
+								$name = $term->name;
 								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
 								
 								if($hex == ''){
@@ -56,7 +68,7 @@ while ( have_posts() ) : the_post();
 								};
 								
 								?>
-						 		<div class="mx-1" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+						 		<div class="mx-1 product-color" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;" data-name="<?php echo $name ?>"></div>
 						 <?php
 							}
 						?>

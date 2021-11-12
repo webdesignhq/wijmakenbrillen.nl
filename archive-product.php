@@ -58,6 +58,35 @@ if(is_search()){
                                 <input type="text" name="price_min" placeholder="Min. prijs" />
                                 <input type="text" name="price_max" placeholder="Max. prijs" />
                             </div>
+                            <div class="col-12 color__filter">
+                                <h2>Kleur</h2>
+
+                                    <?php 
+                                    // $attributes = get_attributes();
+                                    $terms = get_terms('pa_kleur');
+                                    
+                                    // var_dump($terms);
+
+                                    foreach($terms as $term){
+                                        $singleID = $term->term_id;
+                                        $singleTax = $term->taxonomy;
+                                        
+                                        $hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+                                        
+                                        if($hex == ''){
+                                            $hex = '#000';
+                                        };
+                                        
+                                        ?>
+                                        <label for="color-<?php echo $hex;?>" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"> <input type="checkbox" id="color-<?php echo $hex;?>" name="kleur" > </label>
+                                <?php
+                                    }
+                                ?>
+
+                            </div>
+                            <div class="col-12 ">
+                                <h2>Vorm</h2>
+                            </div>	
                             <div class="col-12 d-flex flex-column mt-3">
                                 <h2>Sorteren</h2>
                                 <label>
