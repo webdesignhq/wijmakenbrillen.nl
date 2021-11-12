@@ -24,11 +24,6 @@ overflow-x: hidden;
 span{
   font-family: "Courier New", sans-serif;
 }
-
-p {
-	line-height: 30px;
-}
-
 a{
  text-decoration: none!important;
  color: rgba(58, 170, 53);
@@ -649,13 +644,21 @@ header {
 
 #previewimage {
     position: absolute;
-    z-index: 10;
-    width: 150px;
+    z-index: 15;
+    width: 300px;
     height: auto;
     left: 0;
     right: 0;
-    margin-left: 78px;
-    margin-top: 24px;
+}
+
+
+#previewglasses {
+    position: absolute;
+    z-index: 5;
+    width: 300px;
+    height: auto;
+    left: 0;
+    right: 0;
 }
 
 .taken{
@@ -664,10 +667,8 @@ header {
     transition: all 0.5s ease-in;
     border: solid 0px white;
     box-shadow: 0 0px 0px 0 rgba(0,0,0,0.2);
-
     z-index: 2;
 }
-
 
 .variation {
   display: none;
@@ -698,7 +699,8 @@ header {
 .absoluteVP2 {
   position: absolute;
   top: 0px;
-  left: 10px;
+  left: 0;
+  right: 0;
   width: 300px;
   height: 200px;
   border: 0px solid #73AD21;
@@ -706,7 +708,7 @@ header {
 
 .absoluteVP2 img {
   width: 300px;
-  height: 200px;
+  height: auto;
 }
 
 .absoluteVP3 {
@@ -794,6 +796,7 @@ header {
 
 .glass-colors {
   display:none;
+	width: 100%;
 }
 
 /* Archive */
@@ -832,7 +835,7 @@ header {
 }
 .filter__title{
 	font-size: 35px;
-  font-family: "Courier New", Courier;
+  	font-family: "Courier New", Courier;
 }
 
 #filters input[type='text']{
@@ -864,6 +867,10 @@ header {
 #filters .btn:hover{
   background-color: #fff;
   color: #000;
+}
+
+.yith-wcwl-add-button{
+	text-align: end;
 }
 
 /* Single Product */
@@ -1165,6 +1172,10 @@ width: 100%;
 
 .woocommerce .account-container{
   box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+}
+
+.woocommerce-Price-currencySymbol {
+	display: none;
 }
 
 /* Footer */
