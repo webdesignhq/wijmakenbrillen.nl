@@ -1,4 +1,5 @@
 <?php 
+/* Template Name: één kolom layout */
 get_header(); ?>
 <div id="content">
 <div class="container-xxl pt-5 pb-5">

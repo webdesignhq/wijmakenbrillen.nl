@@ -892,10 +892,26 @@ header {
 .product__info--container .product__color--name{
   font-size: 28px;
 }
-.product__price--single span{
+.product__price--single span, .product__options--container .price{
   font-size: 32px;
   color: #000;
   font-family: "Roboto", sans-serif;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.product__options--container{
+  position: relative;
+}
+.variations_form{
+	margin-top: 25px;
+}
+.product__options--container .woocommerce-Price-currencySymbol{
+	display: unset;
+}
+.wcpa_type_image-group .image-group{
+	display: flex;
 }
 .handmade__container--single p {
 padding: unset;
@@ -929,7 +945,7 @@ margin-top: 50px;
   margin-bottom: -150px;
 }
 .product__price--cta a{
-  padding: 10px 12px;
+  padding: 16px;
   background-color: rgba(0, 0, 0, 0.74);
   font-size: 28px;
   font-family: "Courier New", Courier;
@@ -937,8 +953,9 @@ margin-top: 50px;
   display: inline;
   margin-bottom: 25px;
   text-decoration: none;
+	width: 100%;
 }
-.button__add--cart a{
+.button__add--cart a, .single_add_to_cart_button {
   padding: 10px 12px;
   background-color: rgba(58, 170, 53);
   font-size: 28px;
@@ -948,11 +965,12 @@ margin-top: 50px;
   margin-bottom: 25px;
   text-decoration: none;
   position: relative;
+  margin-top: 20px;
 }
 .button__add--cart a:hover{
   /* background-color: #393839; */
 }
-.button__add--cart a::after {
+.button__add--cart a::after, .single_add_to_cart_button::after {
 	content: "";
 	position: absolute;
 	top: 75%;
@@ -962,9 +980,25 @@ margin-top: 50px;
   background-color: #393839;
   transition: .3s ease all .3s;
 }
-.button__add--cart:hover a::after{
+.single_add_to_cart_button:hover::after {
+	width: 88%!important;
+}
+.button__add--cart:hover a::after, .single_add_to_cart_button:hover::after {
 	width: 66%;
   transition: 0.2s ease all;
+}
+.woocommerce-variation-add-to-cart{
+	display: flex;
+	flex-direction: column;
+}
+.input-text.qty{
+	width: 33%;
+	height: 50px;
+	padding: 10px 16px;
+	margin-top: 25px;
+}
+.woocommerce .quantity .qty{
+	width: 4.631em!important;
 }
 .product__info--container .product__favorites--button {
   text-align: right;

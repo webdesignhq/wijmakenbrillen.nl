@@ -100,7 +100,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 
 			?>
 
-				<div class="product d-flex flex-column">
+				<div class="product d-flex flex-column justify-content-between">
                     <span class="product__sale--flag"></span>
 					<span class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></span>
                     <!-- <img src="/assets/img/product.png" alt="" /> -->
@@ -185,7 +185,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 
 				<div class="product d-flex flex-column">
                     <span class="product__sale--flag"></span>
-                    <a href="#" class="product__favorites--button"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+                    <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
                     <!-- <img src="/assets/img/product.png" alt="" /> -->
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>

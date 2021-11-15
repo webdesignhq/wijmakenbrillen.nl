@@ -106,12 +106,13 @@ get_header();
 										$posts->the_post();
 								?>
 								<div class="col-md-3">
-									 <img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
-									</div>
+ <img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
+</div>
 								<?php
 										// array_push($glassesArray, get_the_ID());
 									}
 								?>
+
 					</div>
             </div>
          </div>
