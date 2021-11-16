@@ -23,7 +23,7 @@ if(is_search()){
 }
 
 ?>
-<div class="hero" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
+<div class="hero hero-index" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
 	<div class="welcome__message d-flex flex-column">
 		<div class="welcome__message--1"><span>Alle</span></div>
 		<div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
@@ -48,16 +48,11 @@ if(is_search()){
             </div>
             <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between">
                 <div id="filters" class="filter__container col-lg-4 col-12">
-                <!-- <p class="ms-5 ps-2 filter__title">Filters</p> -->
-                    <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12">
+                <p class="filter__title">Filters</p>
+<!--                     <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12"> -->
                         <div class="d-flex flex-column col-12">
-                           <!-- <div class="col-12">
-                                <h2>Bedrag</h2>
-                                <input type="text" name="price_min" placeholder="Min. prijs" />
-                                <input type="text" name="price_max" placeholder="Max. prijs" />
-                            </div> -->
 							 <div class="col-6 color__filter mt-3">
-                                <h2>Kleur</h2>
+                                <span class="d-block">Kleur</span>
 
                                     <?php 
                                     // $attributes = get_attributes();
@@ -86,7 +81,7 @@ if(is_search()){
                             </div>
 							
 												 <div class="col-6 mt-3">
-                                <h2>Vorm</h2>
+                                 <span class="d-block">Vorm</span>
 
                                     <?php 
                                     $terms = get_terms('pa_vorm');
@@ -94,13 +89,10 @@ if(is_search()){
                                     foreach($terms as $term){
 
 										$name = $term->name;
-                                        
-                                        if($hex == ''){
-                                            $hex = '#000';
-                                        };
-                                        
+                                        $slug = $tern->slug;
+                                       
                                         ?>
-                                        <label class="filter-item" for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" data-slug="<?php echo $slug;?>"> <?php echo $name;?> </label>
+                                        <label class="filter-item" for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" data-shape="<?php echo $slug;?>"> <?php echo $name;?> </label>
                                 <?php
                                     }
                                 ?>
@@ -113,9 +105,9 @@ if(is_search()){
                             </div>	
                         </div>
                         <div class="col-8 mt-5">
-                            <button class="btn btn-primary">Filters toepassen</button>
+                            <button class="btn btn-primary filter-item reset-filters" data-slug="all">Filters terugzetten</button>
                         </div>
-                    </form>
+<!--                     </form> -->
                 </div>
                 <div class="product__container col-lg-8 col-12 px-lg-5 px-2 my-5 ">
                     <div id="response" class="d-flex flex-row flex-wrap justify-content-lg-start justify-content-between">
@@ -223,9 +215,8 @@ if(is_search()){
 
                 </div>
             </div>
-</div>
-
-<div class="category__container category__container--archive mx-auto">
+	
+	<div class="category__container category__container--archive mx-auto">
                 <p class="collection__desc mx-auto mt-4">
                 	<?php 
                         $info = get_field('more_info'); 
@@ -233,6 +224,10 @@ if(is_search()){
                     ?>
                 </p>
 </div>
+	
+</div>
+
+
 
 
 

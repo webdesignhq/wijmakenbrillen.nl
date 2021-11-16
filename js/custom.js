@@ -36,6 +36,10 @@ $().ready(()=> {
         window.location = $(this).find('.product__button').attr('href');
     });
     
+	$(".choose-glasses").click(function(e){
+		e.preventDefault();
+		$('.variations_form').slideToggle();
+	});
 
     $(".menu-toggle").click(function(e) {
         $(".mobile__menu__overlay--container").css('left', '0');
@@ -60,7 +64,7 @@ $().ready(()=> {
         console.log(color);
 		$.ajax({
 		  type: 'POST',
-		  url: '/wijmakenbrillen.nl/wp-admin/admin-ajax.php',
+		  url: '/~brillen/wp-admin/admin-ajax.php',
 		  dataType: 'html',
 		  data: {
 			action: 'filter_projects',
@@ -75,7 +79,6 @@ $().ready(()=> {
 		  }
 		})
 	});
-
 
 
 

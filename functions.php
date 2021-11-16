@@ -101,6 +101,8 @@ function sf_update_woo_flexslider_options( $options ) {
 
 function filter_projects() {
 	$color = $_POST['color'];
+	
+	if ($color !== 'all'){
   
 	  $ajaxposts = new WP_Query([
 		'post_type' => 'product',
@@ -116,6 +118,13 @@ function filter_projects() {
 			)
 		)
 	  ]);
+		
+	} else {
+		 $ajaxposts = new WP_Query([
+		 	'post_type' => 'product',
+			'posts_per_page' => -1
+		]);
+	}
   
 	  $response = '';
   
@@ -305,7 +314,7 @@ add_filter( 'acf/location/rule_match/wc_prod_attr', function( $match, $rule, $op
 
 function add_product_colors() { 
     ?>
-	<div class="col-8 d-flex flex-column">
+	<div class="col-8 d-flex flex-column mt-3">
 	<span class="product__price">Beschikbare kleuren</span>
 	<div class="d-flex">
 		<?php 
@@ -329,6 +338,11 @@ function add_product_colors() {
 		 <?php
 			}
 		?>
+	</div>
+</div>
+<div class="col-12 d-flex flex-column">
+	<div class="d-flex col-12">
+		<a href="/~brillen/paskamer-nieuw" class="single_add_to_cart_button ">Paskamer</a><a href="" class="single_add_to_cart_button ms-2 choose-glasses">Kies je glazen</a>
 	</div>
 </div>
 <?php
