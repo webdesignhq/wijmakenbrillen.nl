@@ -104,10 +104,11 @@ get_header();
 
 									while ($posts->have_posts()) {
 										$posts->the_post();
+										$imagemask = get_field('img_mask');
 								?>
 								<div class="col-md-3">
- <img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
-</div>
+									<img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('<?php echo $imagemask;?>'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
+								</div>
 								<?php
 										// array_push($glassesArray, get_the_ID());
 									}
