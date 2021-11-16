@@ -84,6 +84,7 @@ if(is_search()){
                                         $singleID = $term->term_id;
                                         $singleTax = $term->taxonomy;
                                         $slug = $term->slug;
+                                        $name = $term->name;
                                         
                                         $hex = get_field('colorpicker', $singleTax . '_' . $singleID);
                                         
@@ -92,7 +93,7 @@ if(is_search()){
                                         };
                                         
                                         ?>
-                                        <label class="filter-item" for="<?php echo $slug;?>" data-slug="<?php echo $slug;?>" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"> <input type="checkbox" id="<?php echo $slug;?>" name="kleur" > </label>
+                                        <label class="filter-item" for="<?php echo $slug;?>" data-slug="<?php echo $slug;?>" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"> <input type="checkbox" id="<?php echo $slug;?>" name="kleur" > <span class="color__filter--lable" style="background-color:<?php echo $hex; ?>;"><?php echo $name; ?></span> </label>
                                 <?php
                                     }
                                 ?>

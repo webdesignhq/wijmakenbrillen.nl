@@ -874,7 +874,25 @@ header {
   background-color: #fff;
   color: #000;
 }
-
+.color__filter{
+  position: relative;
+  padding-bottom: 50px;
+}
+.filter-item:hover .color__filter--lable{
+  opacity: 1;
+}
+.color__filter--lable{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: #fff;
+  opacity: 0;
+  z-index: 99;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  transition: all .15s ease-in;
+}
 .yith-wcwl-add-button{
 	text-align: end;
 }
