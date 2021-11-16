@@ -126,7 +126,7 @@ function filter_projects() {
 		  $content = $product->post_content;
 		  ?>
 
-			<div class="product archive__product d-flex flex-column justify-content-between">
+			<div class="product archive__product d-flex flex-column justify-content-between product_clickable">
                     <span class="product__sale--flag"></span>
                     <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />

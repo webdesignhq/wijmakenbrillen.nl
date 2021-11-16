@@ -820,6 +820,9 @@ header {
 	padding: 30px!important;
 	padding-top: 0px!important;
 }
+.product_clickable:hover{
+  cursor: pointer;
+}
 .archive__collection nav{
 	width: 100%;
 }
@@ -841,13 +844,14 @@ header {
 	font-size: 35px;
   	font-family: "Courier New", Courier;
 }
-
+.filter-item:hover{
+  cursor: pointer;
+}
 #filters input[type='text']{
   background-color: #eee;
   border: none;
   padding: 10px;
 }
-
 #filters input[type="checkbox"]{
   position: absolute;
   height: 0;
@@ -856,7 +860,6 @@ header {
   top: 0;
   opacity: 0;
 }
-
 #filters .btn{
   width: 100%;
   background-color: #000;
@@ -867,7 +870,6 @@ header {
   font-size: 20px;
   border-radius: 0px;
 }
-
 #filters .btn:hover{
   background-color: #fff;
   color: #000;
@@ -944,7 +946,7 @@ margin-top: 50px;
   max-width: unset;
 }
 .size__container--single .categories .category{
-  padding-top: 15%;
+/*   padding-top: 15%; */
   height: 300px;
 }
 .handmade__container--single h2{

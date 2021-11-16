@@ -31,6 +31,12 @@ $().ready(()=> {
         window.location = $(this).find('a').attr('href');
     });
 
+    $(".product_clickable").click(function(e) {
+        e.preventDefault();
+        window.location = $(this).find('.product__button').attr('href');
+    });
+    
+
     $(".menu-toggle").click(function(e) {
         $(".mobile__menu__overlay--container").css('left', '0');
     });

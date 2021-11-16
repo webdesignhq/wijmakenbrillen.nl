@@ -37,22 +37,34 @@ while ( have_posts() ) : the_post();
 </div>
 
         <div class="category__container-1 size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
+                <?php 
+					$width = $product->get_attribute('breedte-glas');
+					$height = $product->get_attribute('hoogte-glas');
+					$center = $product->get_attribute('middenafstand');
+					$fullWidth = $product->get_attribute('totale-breedte');
+					$neusbrug = $product->get_attribute('neusbrug');
+                ?>
                 <p class="category__headline">Afmetingen</p>
                 <div class="categories d-lg-flex d-block flex-row justify-content-between mt-4">
-                    <div class="col-lg-2 col-12 me-0 category">
+                    <div class="col-lg-2 col-12 me-0 category d-flex flex-column text-center justify-content-center">
                         <span>Breedte glas</span>
+                        <?php echo $width; ?>
                     </div>
-                    <div class="col-lg-2 col-12 mx-0 category" >
+                    <div class="col-lg-2 col-12 mx-0 category d-flex flex-column text-center justify-content-center" >
                         <span>Hoogte glas</span>
+						<?php echo $height; ?>
                     </div>
-                    <div class="col-lg-2 col-12 ms-0 category" >                    
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center" >                    
                         <span>Middenafstand</span>
+						<?php echo $center; ?>
                     </div>
-                    <div class="col-lg-2 col-12 ms-0 category" >
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center" >
                         <span>Totale breedte</span>
+						<?php echo $fullWidth; ?>
                     </div>
-                    <div class="col-lg-2 col-12 ms-0 category">
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center">
                         <span>Neusbrug</span>
+						<?php echo $neusbrug; ?>
                     </div>
                 </div>
         </div>
