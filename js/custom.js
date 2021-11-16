@@ -1,5 +1,5 @@
 $().ready(()=> {
-    console.log('ready')
+    console.log('ready');
 
     $('.slider-for').slick({
         slidesToShow: 1,
@@ -105,8 +105,11 @@ $().ready(()=> {
 
 });
 	$('.product-color').click(function(){
+		let color = $(this).attr("data-name");
 		$('.product-color').removeClass('active');
 		$(this).addClass('active');
+		console.log(color);
+		$("#pa_kleur").val(color).change();
 	});
 
 
