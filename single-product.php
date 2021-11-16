@@ -28,13 +28,13 @@ while ( have_posts() ) : the_post();
         </div>
         <div class="col-lg-5 col-11 mx-auto mx-lg-0 product__info--container">
             <div class="row">
-                <div class="col-11">
+<!--                 <div class="col-11">
                     <p class="product__category__title--single"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <h1 class="product__color--name"><?php the_title() ?></h1>  
                 </div>
                 <div class="col-1">
                     <a href="#" class="product__favorites--button"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
-                </div>
+                </div> -->
             </div>
            
             <div class="product__price--container row mt-4">
@@ -43,24 +43,13 @@ while ( have_posts() ) : the_post();
                     <div class="d-flex">
 						<?php 
 							$post = get_post();
-							$id =  $post->ID;
-							$product_variations = new WC_Product_Variable( $id );
-							$product_variations = $product_variations->get_available_variations();
-							
-							 foreach ($product_variations as $variation){
-								 $var_id = $variation['variation_id'];
-								 $color = $variation['attributes']['attribute_pa_kleur'];
-								 $color_b;
-								 
-								 echo $var_id; ?> <br/> <?php 
-								 echo $color_b; ?> <br/> <?php 
-							 }
 							
 							$terms = get_the_terms( $product->id, 'pa_kleur');
 							foreach($terms as $term){
 								$singleID = $term->term_id;
 								$singleTax = $term->taxonomy;
 								$name = $term->name;
+								$slug = $term->slug;
 								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
 								
 								if($hex == ''){
@@ -68,25 +57,25 @@ while ( have_posts() ) : the_post();
 								};
 								
 								?>
-						 		<div class="mx-1 product-color" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;" data-name="<?php echo $name ?>"></div>
+						 		<div class="mx-1 product-color" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;" data-name="<?php echo $slug ?>"></div>
 						 <?php
 							}
 						?>
 					</div>
                 </div>
                 <div class="col-4">
-                    <span class="product__price--single"><?php echo $product->get_price_html(); ?></span>
+<!--                     <span class="product__price--single"><?php echo $product->get_price_html(); ?></span> -->
                 </div>
             </div>
             <div class="product__options--container row mt-4">
-                <span class="product__price">Selecteer je glazen</span>
-                <span class="product__price">[OPTIONS]</span>
+				<!-- <?php do_action( 'woocommerce_before_add_to_cart_button'); ?> -->
+				<?php do_action( 'woocommerce_single_product_summary'); ?>
+             
             </div>
-			<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
-            <div class="product__cta--container col-12 d-flex flex-row justify-content-start mt-5">
+<!--             <div class="product__cta--container col-12 d-flex flex-row justify-content-start mt-5">
                 <span class="product__price--cta me-3"><a href="#">Passen</a></span>
                 <span class="product__price--cta button__add--cart"><?php echo '<a href="'. $checkout_url.'?add-to-cart=' .$productID. '">'?>In Winkelwagen</a></span>
-            </div>
+            </div> -->
         </div>
 </div>
 </div>

@@ -100,7 +100,6 @@ function sf_update_woo_flexslider_options( $options ) {
 }
 
 
-
 add_action('wp_ajax_myfilter', 'filter_function'); // wp_ajax_{ACTION HERE} 
 add_action('wp_ajax_nopriv_myfilter', 'filter_function');
 
