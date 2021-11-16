@@ -83,6 +83,7 @@ if(is_search()){
                                     foreach($terms as $term){
                                         $singleID = $term->term_id;
                                         $singleTax = $term->taxonomy;
+                                        $slug = $term->slug;
                                         
                                         $hex = get_field('colorpicker', $singleTax . '_' . $singleID);
                                         
@@ -91,7 +92,7 @@ if(is_search()){
                                         };
                                         
                                         ?>
-                                        <label for="color-<?php echo $hex;?>" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"> <input type="checkbox" id="color-<?php echo $hex;?>" name="kleur" > </label>
+                                        <label class="filter-item" for="<?php echo $slug;?>" data-slug="<?php echo $slug;?>" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"> <input type="checkbox" id="<?php echo $slug;?>" name="kleur" > </label>
                                 <?php
                                     }
                                 ?>
@@ -113,7 +114,7 @@ if(is_search()){
                                         };
                                         
                                         ?>
-                                        <label for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" > <?php echo $name;?> </label>
+                                        <label class="filter-item" for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" data-slug="<?php echo $slug;?>"> <?php echo $name;?> </label>
                                 <?php
                                     }
                                 ?>

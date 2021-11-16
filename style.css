@@ -914,6 +914,9 @@ header {
 .variations_form{
 	margin-top: 25px;
 }
+.active{
+	border: solid 3px #4CAA47!important;
+}
 .product__options--container .woocommerce-Price-currencySymbol{
 	display: unset;
 }

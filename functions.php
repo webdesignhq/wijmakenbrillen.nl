@@ -99,76 +99,41 @@ function sf_update_woo_flexslider_options( $options ) {
     return $options;
 }
 
-
-add_action('wp_ajax_myfilter', 'filter_function'); // wp_ajax_{ACTION HERE} 
-add_action('wp_ajax_nopriv_myfilter', 'filter_function');
-
-function filter_function(){
-	$args = array(
+function filter_projects() {
+	$color = $_POST['color'];
+  
+	  $ajaxposts = new WP_Query([
 		'post_type' => 'product',
-		'orderby' => 'date', // we will sort posts by date
-		'order'	=> $_POST['date'] // ASC or DESC
-	);
- 
-	// for taxonomies / categories
-	if( isset( $_POST['categoryfilter'] ) )
-		$args['tax_query'] = array(
+		'posts_per_page' => -1,
+		'orderby' => 'menu_order', 
+		'order' => 'desc',
+		'tax_query' => array(
 			array(
-				'taxonomy' => 'product_cat',
-				'field' => 'id',
-				'terms' => $_POST['categoryfilter']
+				'taxonomy' => 'pa_kleur',
+				'field' => 'slug',
+				'terms' => $color,
+				'operator' => 'IN',
 			)
-		);
- 
-	// create $args['meta_query'] array if one of the following fields is filled
-	if( isset( $_POST['price_min'] ) && $_POST['price_min'] || isset( $_POST['price_max'] ) && $_POST['price_max'])
-		$args['meta_query'] = array( 'relation'=>'AND' ); // AND means that all conditions of meta_query should be true
- 
-	// if both minimum price and maximum price are specified we will use BETWEEN comparison
-	if( isset( $_POST['price_min'] ) && $_POST['price_min'] && isset( $_POST['price_max'] ) && $_POST['price_max'] ) {
-		$args['meta_query'][] = array(
-			'key' => '_price',
-			'value' => array( $_POST['price_min'], $_POST['price_max'] ),
-			'type' => 'numeric',
-			'compare' => 'between'
-		);
-	} else {
-		// if only min price is set
-		if( isset( $_POST['price_min'] ) && $_POST['price_min'] )
-			$args['meta_query'][] = array(
-				'key' => '_price',
-				'value' => $_POST['price_min'],
-				'type' => 'numeric',
-				'compare' => '>'
-			);
- 
-		// if only max price is set
-		if( isset( $_POST['price_max'] ) && $_POST['price_max'] )
-			$args['meta_query'][] = array(
-				'key' => '_price',
-				'value' => $_POST['price_max'],
-				'type' => 'numeric',
-				'compare' => '<'
-			);
-	}
- 
-	// if you want to use multiple checkboxed, just duplicate the above 5 lines for each checkbox
- 
-	$query = new WP_Query( $args );
-	
-	if( $query->have_posts() ) :
-		while( $query->have_posts() ): $query->the_post(); 
-		global $product;
-		?>
+		)
+	  ]);
+  
+	  $response = '';
+  
+	  if($ajaxposts->have_posts()) {
+		while($ajaxposts->have_posts()) : $ajaxposts->the_post();
+		  global $product;
+		  $title = $product->post_title;
+		  $content = $product->post_content;
+		  ?>
 
 			<div class="product archive__product d-flex flex-column justify-content-between">
-                <span class="product__sale--flag"></span>
-                <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
-				<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
-                <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
-                <p class="product__color--name"><?php the_title() ?></p>
-                <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-    <?php 
+                    <span class="product__sale--flag"></span>
+                    <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
+					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
+                    <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
+                    <p class="product__color--name"><?php the_title() ?></p>
+                    <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
+                       						<?php 
 							$attributes = $product->get_attributes();
 							$terms = get_the_terms( $product->id, 'pa_kleur');
 							
@@ -187,21 +152,24 @@ function filter_function(){
 						 <?php
 							}
 						?>
+                    </div>
+                    <span class="product__price"><?php echo $product->get_price_html();  ?></span>
+                    <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
                 </div>
-                <span class="product__price"><?php echo $product->get_price_html();  ?></span>
-                <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
-            </div>
 
-	<?php endwhile;
-			wp_reset_postdata();
-		else :
-			echo 'Geen producten gevonden';
-		endif;
+
+<?php
+		endwhile;
+	  } else {
 		
-		die();
-	} ?>
+	  }
+	  exit;
+  }
+	add_action('wp_ajax_filter_projects', 'filter_projects');
+	add_action('wp_ajax_nopriv_filter_projects', 'filter_projects');
 
-<?php function post_type_glasses() {
+
+function post_type_glasses() {
     $supports = array(
         'title',
         'editor',
@@ -296,7 +264,6 @@ add_filter( 'acf/location/rule_match/wc_prod_attr', function( $match, $rule, $op
     return $match;
 }, 10, 3 );
 
-
 function add_product_colors() { 
     ?>
 	<div class="col-8 d-flex flex-column">
@@ -328,7 +295,7 @@ function add_product_colors() {
 <?php
 
 };     
-add_action( 'woocommerce_single_product_summary', 'add_product_colors', 15 ); 
+add_action( 'woocommerce_single_product_summary', 'add_product_colors', 25 ); 
 ?>
 
 

@@ -45,6 +45,34 @@ $().ready(()=> {
 
     var timeout;
 
+
+    $('.filter-item').on('click', function(e) {
+        e.preventDefault();
+		$('.filter-item').removeClass('active');
+		$(this).addClass('active');
+        let color = $(this).attr("data-slug");
+        console.log(color);
+		$.ajax({
+		  type: 'POST',
+		  url: '/wijmakenbrillen.nl/wp-admin/admin-ajax.php',
+		  dataType: 'html',
+		  data: {
+			action: 'filter_projects',
+			color: color
+		  },
+          error: function(xhr, status, error) {
+            var err = eval("(" + xhr.responseText + ")");
+            alert(err.Message);
+          },
+		  success: function(res) {
+			$('#response').html(res);
+		  }
+		})
+	});
+
+
+
+
     $( function( $ ) {
         $('.woocommerce').on('change', 'input.qty', function(){
             $("[name='update_cart']").prop("disabled", false);
@@ -59,22 +87,22 @@ $().ready(()=> {
         });
     } );
 
-    $('#filter').submit(function(){
-		var filter = $('#filter');
-		$.ajax({
-			url:filter.attr('action'),
-			data:filter.serialize(), // form data
-			type:filter.attr('method'), // POST
-			beforeSend:function(xhr){
-				filter.find('button').text('Processing...'); // changing the button label
-			},
-			success:function(data){
-				filter.find('button').text('Filter toepassen'); // changing the button label back
-				$('#response').html(data); // insert data
-			}
-		});
-		return false;
-	});
+    // $('#filter').submit(function(){
+	// 	var filter = $('#filter');
+	// 	$.ajax({
+	// 		url:filter.attr('action'),
+	// 		data:filter.serialize(), // form data
+	// 		type:filter.attr('method'), // POST
+	// 		beforeSend:function(xhr){
+	// 			filter.find('button').text('Processing...'); // changing the button label
+	// 		},
+	// 		success:function(data){
+	// 			filter.find('button').text('Filter toepassen'); // changing the button label back
+	// 			$('#response').html(data); // insert data
+	// 		}
+	// 	});
+	// 	return false;
+	// });
 	
 	// Set constraints for the video stream
 	var constraints = { video: { facingMode: "user" }, audio: false };// Define constants
