@@ -28,6 +28,10 @@ a{
  text-decoration: none!important;
  color: rgba(58, 170, 53);
 }
+
+h2 {
+margin-top: 25px;}
+
 input[type="text"], input[type="tel"], input[type="email"],input[type="password"], textarea{
   padding: 12px;
   border: 1px solid;
