@@ -55,12 +55,17 @@ $().ready(()=> {
 
     var timeout;
 
-
+	let color = [];
     $('.filter-item').on('click', function(e) {
         e.preventDefault();
-		$('.filter-item').removeClass('active');
+// 		$('.filter-item').removeClass('active');
 		$(this).addClass('active');
-        let color = $(this).attr("data-slug");
+		
+// 		if (color.includes($(this).attr("data-slug"))){
+// 			color.pop($(this).attr("data-slug"));
+// 		} else{
+        	color.push($(this).attr("data-slug"));
+// 		}
         console.log(color);
 		$.ajax({
 		  type: 'POST',
@@ -78,6 +83,10 @@ $().ready(()=> {
 			$('#response').html(res);
 		  }
 		})
+	});
+	
+	$('.reset-filters').on('click', function(e) {
+		location.reload();
 	});
 
 

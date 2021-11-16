@@ -102,9 +102,14 @@ function sf_update_woo_flexslider_options( $options ) {
 function filter_projects() {
 	$color = $_POST['color'];
 	
-	if ($color !== 'all'){
-  
-	  $ajaxposts = new WP_Query([
+	if (is_null($color)){
+		$ajaxposts = new WP_Query([
+		 	'post_type' => 'product',
+			'posts_per_page' => -1
+		]);
+		
+	} else {
+		 $ajaxposts = new WP_Query([
 		'post_type' => 'product',
 		'posts_per_page' => -1,
 		'orderby' => 'menu_order', 
@@ -113,17 +118,11 @@ function filter_projects() {
 			array(
 				'taxonomy' => 'pa_kleur',
 				'field' => 'slug',
-				'terms' => $color,
+				'terms' => array_values($color),
 				'operator' => 'IN',
 			)
 		)
 	  ]);
-		
-	} else {
-		 $ajaxposts = new WP_Query([
-		 	'post_type' => 'product',
-			'posts_per_page' => -1
-		]);
 	}
   
 	  $response = '';

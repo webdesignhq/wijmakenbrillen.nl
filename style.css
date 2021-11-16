@@ -942,6 +942,12 @@ header {
   padding: 50px!important;
   background-color: #ececec!important;
 }
+.wcpa_type_number label{
+	display: none!important;
+}
+.product-label{
+	font-size: 20px!important;
+}
 .variations_form{
 	display: none;
 }
