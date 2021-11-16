@@ -908,6 +908,9 @@ header {
 .product__options--container{
   position: relative;
 }
+.variations{
+	display: none!important;
+}
 .variations_form{
 	margin-top: 25px;
 }

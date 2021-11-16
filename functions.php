@@ -297,19 +297,6 @@ add_filter( 'acf/location/rule_match/wc_prod_attr', function( $match, $rule, $op
 }, 10, 3 );
 
 
-function test() { ?>
-	<table class="woocommerce-product-attributes shop_attributes">
-	<?php foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>
-		<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">
-			<th class="woocommerce-product-attributes-item__label"><?php echo wp_kses_post( $product_attribute['label'] ); ?></th>
-			<td class="woocommerce-product-attributes-item__value"><?php echo wp_kses_post( $product_attribute['value'] ); ?></td>
-		</tr>
-	<?php endforeach; ?>
-</table>
-
-<?php }
-add_action( 'woocommerce_before_add_to_cart_button', 'test' );
-
 function add_product_colors() { 
     ?>
 	<div class="col-8 d-flex flex-column">
@@ -319,7 +306,7 @@ function add_product_colors() {
 			global $product;
 			$post = get_post();
 			
-			$terms = get_the_terms( $product->id, 'pa_kleur');
+			$terms = get_the_terms( $product->get_id(), 'pa_kleur');
 			foreach($terms as $term){
 				$singleID = $term->term_id;
 				$singleTax = $term->taxonomy;
