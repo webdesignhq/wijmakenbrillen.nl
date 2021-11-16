@@ -207,6 +207,45 @@ function post_type_glasses() {
 }
 add_action('init', 'post_type_glasses');
 
+
+function post_type_reviews() {
+    $supports = array(
+        'title',
+        'editor',
+        'thumbnail',
+        'excerpt',
+        'custom-fields',
+        'revisions',
+        'post-formats',
+    );
+    $labels = array(
+        'name' => 'Reviews',
+        'singular_name' => 'Review',
+        'menu_name' => 'Reviews',
+        'name_admin_bar' => 'Reviews',
+        'add_new' => 'Toevoegen',
+        'add_new_item' => 'Voeg review toe',
+        'new_item' => 'Glazen reviews',
+        'edit_item' => 'Bewerk review',
+        'view_item' => 'Bekijk review',
+        'all_items' => 'Alle reviews',
+        'search_items' => 'Zoek review',
+        'not_found' => 'Geen reviews gevonden',
+    );
+    $args = array(
+        'supports' => $supports,
+        'labels' => $labels,
+        'public' => true,
+        'query_var' => true,
+        'rewrite' => array('slug' => 'reviews'),
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-admin-page',
+        'hierarchical' => false
+    );
+    register_post_type('review', $args);
+}
+add_action('init', 'post_type_reviews');
+
 add_filter( 'dgwt/wcas/form/magnifier_ico', function ( $html, $class ) {
 	$html = '<i class="fa fa-glasses ' . $class . '"></i>';
 	return $html;

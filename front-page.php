@@ -225,16 +225,32 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
             </div>
 
 </div>
+<div id="reviews" class="fitting__container fitting__container--footer" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg); padding: 100px">
+	
+<div class="container-xxl">
+			<p class="fitting__title">Wat zeggen onze klanten</p>
+                <div class="d-flex flex-row mt-5">          
+		<?php   
+						$args = array(
+							'post_type'      => 'review',
+							'posts_per_page' => 5
+						);
 
-<div class="fitting__container fitting__container--footer d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
-            <div class="fitting__info col-12 offset-lg-1 offset-0">
-                <p class="fitting__title">Wat zeggen onze klanten</p>
-                <div class="fitting__desc">
+						$loop = new WP_Query( $args );
 
+						while ( $loop->have_posts() ) : $loop->the_post();
+							global $product;
+
+					?>
+					<div class="d-flex flex-column" style="background-color: #fff; padding: 40px; margin: 0 40px;">
+                    	<h3><?php the_title() ?></h3>
+						<p><?php the_content() ?></p>
+					</div>
+					
+					<?php endwhile; ?>
                 </div>
             </div>
 </div>
-
 <?php
 get_footer();
 
