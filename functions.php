@@ -309,7 +309,41 @@ function test() { ?>
 
 <?php }
 add_action( 'woocommerce_before_add_to_cart_button', 'test' );
+
+function add_product_colors() { 
+    ?>
+	<div class="col-8 d-flex flex-column">
+	<span class="product__price">Beschikbare kleuren</span>
+	<div class="d-flex">
+		<?php 
+			global $product;
+			$post = get_post();
+			
+			$terms = get_the_terms( $product->id, 'pa_kleur');
+			foreach($terms as $term){
+				$singleID = $term->term_id;
+				$singleTax = $term->taxonomy;
+				$name = $term->name;
+				$slug = $term->slug;
+				$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+				
+				if($hex == ''){
+					$hex = '#000';
+				};
+				
+				?>
+				 <div class="mx-1 product-color" style="background-color: <?php echo $hex;?>; width: 25px; height:25px;" data-name="<?php echo $slug ?>"></div>
+		 <?php
+			}
+		?>
+	</div>
+</div>
+<?php
+
+};     
+add_action( 'woocommerce_single_product_summary', 'add_product_colors', 15 ); 
 ?>
+
 
 
 
