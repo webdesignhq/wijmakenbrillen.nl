@@ -908,6 +908,12 @@ header {
 .product__options--container{
   position: relative;
 }
+.category__container-1{
+  max-width: 100%!important;
+  margin: 50px 0!important;
+  padding: 50px!important;
+  background-color: #ececec!important;
+}
 .variations{
 	display: none!important;
 }

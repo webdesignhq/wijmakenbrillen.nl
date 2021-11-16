@@ -34,9 +34,9 @@ while ( have_posts() ) : the_post();
         </div>
 </div>
 </div>
- 
+</div>
 
-        <div class="category__container size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
+        <div class="category__container-1 size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
                 <p class="category__headline">Afmetingen</p>
                 <div class="categories d-lg-flex d-block flex-row justify-content-between mt-4">
                     <div class="col-lg-2 col-12 me-0 category">
@@ -55,9 +55,9 @@ while ( have_posts() ) : the_post();
                         <span>Neusbrug</span>
                     </div>
                 </div>
-            </div>
+        </div>
 
-
+<div class="container-xxl">
         <div class="category__container size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <p class="product__category__title--single"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
             <p>
@@ -84,6 +84,7 @@ while ( have_posts() ) : the_post();
 	[related products]
 </div>
 </div>
+                </div>
 <?php
 endwhile;
 ?>
