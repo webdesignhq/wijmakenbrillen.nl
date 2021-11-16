@@ -122,6 +122,11 @@ input[type="text"], input[type="tel"], input[type="email"],input[type="password"
   display: none;
 }
 
+
+.effect-multiply {
+ mix-blend-mode: multiply;
+}
+
 /* Header */
 header {
   background-color: #393839;
@@ -346,6 +351,9 @@ header {
   font-size: 50px;
   padding: 80px;
   z-index: 4;
+}
+.hero-index{
+	min-height:55vh!important;
 }
 .welcome__message {
   position: absolute;
@@ -934,6 +942,9 @@ header {
   padding: 50px!important;
   background-color: #ececec!important;
 }
+.variations_form{
+	display: none;
+}
 .variations{
 	display: none!important;
 }
@@ -945,6 +956,12 @@ header {
 }
 .product__options--container .woocommerce-Price-currencySymbol{
 	display: unset;
+}
+.product_meta{
+	display: none;
+}
+.product__options--container .yith-wcwl-add-button{
+	text-align: start!important;
 }
 .wcpa_type_image-group .image-group{
 	display: flex;
