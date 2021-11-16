@@ -31,7 +31,7 @@ if(is_search()){
 </div>
 
 <div class="container container--archive mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
-            <div class="usp__container mx-auto d-flex flex-row justify-content-around p-5">
+            <!-- <div class="usp__container mx-auto d-flex flex-row justify-content-around p-5">
                 <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/milieu.svg" alt="" /><span>Milieuvriendelijk</span></div>
                 <div class="seperator mx-4"></div>
                 <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/hand.svg" alt="" /><span>Handgemaakt</span></div>
@@ -39,8 +39,8 @@ if(is_search()){
                 <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/design.svg" alt="" /><span>Eigen design</span></div>
                 <div class="seperator mx-4 d-lg-inline d-none"></div>
                 <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/factory.svg" alt="" /><span>Eigen productie</span></div>
-            </div>
-            <div class="category__container category__container--archive mx-auto col-6 ">
+            </div> -->
+            <div class="category__container category__container--archive mx-auto">
                 <p class="category__headline"><?php single_term_title(); ?></p>
                 <p class="collection__desc mx-auto mt-4">
                 	<?php echo category_description(); ?>
@@ -51,12 +51,27 @@ if(is_search()){
                 <!-- <p class="ms-5 ps-2 filter__title">Filters</p> -->
                     <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12">
                         <div class="d-flex flex-column col-12">
-                           <div class="col-12">
+                           <!-- <div class="col-12">
                                 <h2>Bedrag</h2>
                                 <input type="text" name="price_min" placeholder="Min. prijs" />
                                 <input type="text" name="price_max" placeholder="Max. prijs" />
+                            </div> -->
+                            <div class="col-12 d-flex flex-column mt-3">
+                                <h2>Sorteren</h2>
+                                <label>
+                                    <div class="input-container">
+                                    <input type="radio" name="date" value="ASC" /> Datum: Oplopend
+                                    <span class="mark"></span>
+                                    </div>
+                                </label>
+                                <label>
+                                    <div class="input-container">
+                                        <input type="radio" name="date" value="DESC" selected="selected" /> Datum: Aflopend
+                                        <span class="mark"></span>
+                                    </div>
+                                </label>
                             </div>
-                            <div class="col-12 color__filter">
+							 <div class="col-6 color__filter mt-3">
                                 <h2>Kleur</h2>
 
                                     <?php 
@@ -82,25 +97,30 @@ if(is_search()){
                                 ?>
 
                             </div>
-                            <div class="col-12 ">
+							
+												 <div class="col-6 mt-3">
                                 <h2>Vorm</h2>
-                            </div>	
 
-                            <div class="col-12 d-flex flex-column mt-3">
-                                <h2>Sorteren</h2>
-                                <label>
-                                    <div class="input-container">
-                                    <input type="radio" name="date" value="ASC" /> Datum: Oplopend
-                                    <span class="mark"></span>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="input-container">
-                                        <input type="radio" name="date" value="DESC" selected="selected" /> Datum: Aflopend
-                                        <span class="mark"></span>
-                                    </div>
-                                </label>
+                                    <?php 
+                                    $terms = get_terms('pa_vorm');
+ 									
+                                    foreach($terms as $term){
+
+										$name = $term->name;
+                                        
+                                        if($hex == ''){
+                                            $hex = '#000';
+                                        };
+                                        
+                                        ?>
+                                        <label for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" > <?php echo $name;?> </label>
+                                <?php
+                                    }
+                                ?>
+
                             </div>
+							
+							
                             <div class="col-12 ">
                                 <input type="hidden" name="action" value="myfilter">
                             </div>	
@@ -167,9 +187,9 @@ if(is_search()){
 
                 ?>
 
-				<div class="product archive__product d-flex flex-column">
+				<div class="product archive__product d-flex flex-column justify-content-between">
                     <span class="product__sale--flag"></span>
-                    <a href="#" class="product__favorites--button"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+                    <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
                     <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                     <p class="product__color--name"><?php the_title() ?></p>

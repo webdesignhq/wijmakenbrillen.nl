@@ -161,17 +161,32 @@ function filter_function(){
 		global $product;
 		?>
 
-			<div class="product archive__product d-flex flex-column">
+			<div class="product archive__product d-flex flex-column justify-content-between">
                 <span class="product__sale--flag"></span>
-                <a href="#" class="product__favorites--button"><i class="fa-regular fa-heart" aria-hidden="true"></i></a>
+                <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
 				<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
                 <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
                 <p class="product__color--name"><?php the_title() ?></p>
                 <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
-                    <div class="product__color"></div>
-                    <div class="product__color"></div>
-                    <div class="product__color"></div>
-                    <div class="product__color"></div>
+    <?php 
+							$attributes = $product->get_attributes();
+							$terms = get_the_terms( $product->id, 'pa_kleur');
+							
+							foreach($terms as $term){
+								$singleID = $term->term_id;
+								$singleTax = $term->taxonomy;
+								
+								$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+								
+								if($hex == ''){
+									$hex = '#000';
+								};
+								
+								?>
+						 		<div style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+						 <?php
+							}
+						?>
                 </div>
                 <span class="product__price"><?php echo $product->get_price_html();  ?></span>
                 <a href="<?php the_permalink() ?>" class="product__button py-3 mt-3">Bekijk bril</a>
@@ -253,6 +268,7 @@ function custom_checkboxes_acf($field) {
 
 add_filter('acf/load_field/name=custom_glasses', 'custom_checkboxes_acf');
 
+
 // Adds a custom rule type.
 add_filter( 'acf/location/rule_types', function( $choices ){
     $choices[ __("Other",'acf') ]['wc_prod_attr'] = 'WC Product Attribute';
@@ -280,6 +296,19 @@ add_filter( 'acf/location/rule_match/wc_prod_attr', function( $match, $rule, $op
     return $match;
 }, 10, 3 );
 
+
+function test() { ?>
+	<table class="woocommerce-product-attributes shop_attributes">
+	<?php foreach ( $product_attributes as $product_attribute_key => $product_attribute ) : ?>
+		<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">
+			<th class="woocommerce-product-attributes-item__label"><?php echo wp_kses_post( $product_attribute['label'] ); ?></th>
+			<td class="woocommerce-product-attributes-item__value"><?php echo wp_kses_post( $product_attribute['value'] ); ?></td>
+		</tr>
+	<?php endforeach; ?>
+</table>
+
+<?php }
+add_action( 'woocommerce_before_add_to_cart_button', 'test' );
 ?>
 
 

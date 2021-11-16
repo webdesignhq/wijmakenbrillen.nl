@@ -22,12 +22,13 @@ get_header();
                      <div class="absoluteVP2"><img src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png" alt="Plaat" width="100%" height="300" /></div>
 
                      <div class="absoluteVP3"><img src="//:0" alt="" id="camera--output"> <img id="previewimage" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png">
+<img id="previewglasses" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/G6.png" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"/>
                      </div>
                   </main>
                </div>
             </div>
             <div class="col-lg-6">
-               <h5><strong>€ <span id="Totaal">169</span>,00</strong></h5>
+               <h5><strong><span id="Totaal">169</span>,00</strong></h5>
                <p><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar de gegevens van het gekozen model te gaan.</a></p>
                <p id="previewtext">(Gekozen model voor snelkoppeling: Anna zwart)</p>
 						<div class="row">
@@ -91,25 +92,27 @@ get_header();
 					</div>
 					<div class="row">
                            <p>Kleur glazen</p>
-                           <div class="col-md-3"><img class="img-rounded" style="float: left;" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/G1.png" alt="" width="40" height="40" /></div>
-                           <?php
-                           $glassesArray = array();
+							 <?php
+								$glassesArray = array();
 
-                           $posts = new WP_Query(
-                              array(
-                                 'post_type' => 'glas',
-                                 'posts_per_page' => -1
-                              )
-                           );
+									$posts = new WP_Query(
+										array(
+											'post_type' => 'glas',
+											'posts_per_page' => -1
+										)
+									);
 
-                           while ($posts->have_posts()) {
-                              $posts->the_post();
-                           ?>
-                             <div class="col-md-3"><img class="img-rounded glass-colors" style="float: left;" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" alt="" width="40" height="40" /></div>
-                           <?php
-                              // array_push($glassesArray, get_the_ID());
-                           }
-                           ?>
+									while ($posts->have_posts()) {
+										$posts->the_post();
+								?>
+								<div class="col-md-3">
+ <img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
+</div>
+								<?php
+										// array_push($glassesArray, get_the_ID());
+									}
+								?>
+
 					</div>
             </div>
          </div>
