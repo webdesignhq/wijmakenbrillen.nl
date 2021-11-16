@@ -34,18 +34,7 @@ while ( have_posts() ) : the_post();
         </div>
 </div>
 </div>
-        <div class="handmade__container handmade__container--single  d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
-            <div class="usp col-5 offset-1">
-            <h2 class="text-uppercase">Wintercollectie</h2>
-                <p>
-                    Lorem ipsum dolor sit amet vultekst voor collectie informatie. Lorem ipsum dolor sit amet vultekst voor collectie informatie.
-                    Lorem ipsum dolor sit amet vultekst voor collectie informatie.
-                </p>
-            </div>
-            <div class="usp__image usp__image--single col-6">
-                <!-- <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');"></div> -->
-            </div>
-        </div>
+ 
 
         <div class="category__container size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
                 <p class="category__headline">Afmetingen</p>
@@ -68,18 +57,6 @@ while ( have_posts() ) : the_post();
                 </div>
             </div>
 
-        <div class="handmade__container handmade__container--single  d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
-            <div class="usp col-5 offset-1">
-                <h2 class="text-uppercase">Virtuele Paskamer</h2>
-                <p>
-                    Lorem ipsum dolor sit amet vultekst voor collectie informatie. Lorem ipsum dolor sit amet vultekst voor collectie informatie.
-                    Lorem ipsum dolor sit amet vultekst voor collectie informatie.
-                </p>
-            </div>
-            <div class="usp__image usp__image--single col-6">
-                <!-- <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');"></div> -->
-            </div>
-        </div>
 
         <div class="category__container size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <p class="product__category__title--single"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
@@ -102,15 +79,11 @@ while ( have_posts() ) : the_post();
             </p>    
         </div>	
 
-        <div class="fitting__container fitting__container--single d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
-            <div class="fitting__info col-10 offset-1">
-                <p class="fitting__title">Wat zeggen onze klanten</p>
-                <div class="fitting__desc">
-                    <?php comments_template(); ?>
-                </div>
-            </div>
-        </div>
-
+<div class="container-xxl">
+    <div class="row mt-5">
+	[related products]
+</div>
+</div>
 <?php
 endwhile;
 ?>
