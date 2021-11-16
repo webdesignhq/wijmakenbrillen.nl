@@ -48,7 +48,7 @@
 				</div>
 				<ul>
 					<li>www.wijmakenbrillen.nl</li>
-					<li><a href="phone:info@06-12928592">06-12928592</li>
+					<li><a href="tel:0612928592">06-12928592</a></li>
 					<li><a href="mailto:info@wijmakenbrillen.nl">info@wijmakenbrillen.nl</a></li>
 					<li>Schutstraat 12-01</li>
 					<li>7901 EC Hoogeveen</li>
