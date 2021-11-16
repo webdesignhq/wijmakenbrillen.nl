@@ -30,7 +30,7 @@ if(is_search()){
 	</div>
 </div>
 
-<div class="container container--archive mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
+<div class="category__container container--archive mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <!-- <div class="usp__container mx-auto d-flex flex-row justify-content-around p-5">
                 <div class="usp d-flex flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/milieu.svg" alt="" /><span>Milieuvriendelijk</span></div>
                 <div class="seperator mx-4"></div>
@@ -56,21 +56,6 @@ if(is_search()){
                                 <input type="text" name="price_min" placeholder="Min. prijs" />
                                 <input type="text" name="price_max" placeholder="Max. prijs" />
                             </div> -->
-                            <div class="col-12 d-flex flex-column mt-3">
-                                <h2>Sorteren</h2>
-                                <label>
-                                    <div class="input-container">
-                                    <input type="radio" name="date" value="ASC" /> Datum: Oplopend
-                                    <span class="mark"></span>
-                                    </div>
-                                </label>
-                                <label>
-                                    <div class="input-container">
-                                        <input type="radio" name="date" value="DESC" selected="selected" /> Datum: Aflopend
-                                        <span class="mark"></span>
-                                    </div>
-                                </label>
-                            </div>
 							 <div class="col-6 color__filter mt-3">
                                 <h2>Kleur</h2>
 
@@ -240,15 +225,14 @@ if(is_search()){
             </div>
 </div>
 
-<div class="fitting__container d-flex flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/reviews_bg.svg);">
-            <div class="fitting__info col-12 offset-1">
-                <p class="fitting__title">Wat zeggen onze klanten</p>
-                <div class="fitting__desc">
-                    
-                </div>
-            </div>
+<div class="category__container category__container--archive mx-auto">
+                <p class="collection__desc mx-auto mt-4">
+                	<?php 
+                        $info = get_field('more_info'); 
+                        echo $info;    
+                    ?>
+                </p>
 </div>
-
 
 
 
