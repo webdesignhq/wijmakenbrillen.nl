@@ -22,7 +22,7 @@ get_header();
                      <div class="absoluteVP2"><img src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png" alt="Plaat" width="100%" height="300" /></div>
 
                      <div class="absoluteVP3"><img src="//:0" alt="" id="camera--output"> <img id="previewimage" src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png">
-<img id="previewglasses" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/G6.png" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/mask-anna.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"/>
+<img id="previewglasses" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/G6.png" style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/transparant.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"/>
                      </div>
                   </main>
                </div>
@@ -40,7 +40,8 @@ get_header();
                                     $args = array(
                                        'post_type'      => 'product',
                                        'posts_per_page' => -1,
-                                       'paged' => $paged
+                                       'paged' => $paged,
+										'orderby' => 'ASC'
                                     );
 									
 									$loop = new WP_Query($args);
@@ -70,7 +71,7 @@ get_header();
                                     <p>Andere kleuren</p>
                                     <?php while ($loop->have_posts()) :
                                        $loop->the_post();
-                                       
+
                                        $variations = $product->get_available_variations();
 									   global $product;		
 							?>
@@ -104,20 +105,26 @@ get_header();
 										)
 									);
 
+										global $product;
+									
+                                         $imagemask = get_field('img_mask');
+										
 									while ($posts->have_posts()) {
 										$posts->the_post();
-										$imagemask = get_field('img_mask');
+
 								?>
 								<div class="col-md-3">
 									<img class="img-rounded glass-colors" src="<?php echo get_the_post_thumbnail_url(); ?>" data-id="<?php echo get_the_ID(); ?>" style="-webkit-mask-image: url('<?php echo $imagemask;?>'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;" onclick="getGlasses(this);"/>
 								</div>
 								<?php
-										// array_push($glassesArray, get_the_ID());
+									
 									}
 								?>
 
 					</div>
+				<a href="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/product/anna" class="btn btn-primary single_add_to_cart_button">Bestel direct</a>
             </div>
+
          </div>
       </div>
    </div>
