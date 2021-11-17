@@ -70,14 +70,16 @@ get_header();
                                     <p>Andere kleuren</p>
                                     <?php while ($loop->have_posts()) :
                                        $loop->the_post();
-                                       global $product;
-                                       $variations = $product->get_available_variations(); ?>
+                                       
+                                       $variations = $product->get_available_variations();
+									   global $product;		
+							?>
 
                                        <div class="flex-row variation" data-modelgroup="<?php echo $product->name; ?>">
                                           <?php foreach ($variations as $key => $value) {
                                           ?>
                                              <div class="d-flex flex-column" style=" float: left;">
-                                                <img data-title="<?php echo $product->name; ?>" data-color="<?php echo $value['attributes']['attribute_pa_kleur'] ?>" style="width: 100px" src="<?php echo $value['image']['gallery_thumbnail_src']; ?>" class="product__image mx-auto" onclick="getModel(this)" />
+                                                <img data-title="<?php echo $product->name; ?>" data-color="<?php echo $value['attributes']['attribute_pa_kleur'] ?>" style="width: 100px" src="<?php echo $value['image']['full_src']; ?>" class="product__image mx-auto" onclick="getModel(this)" />
                                              </div>
                                           <?php
                                           } ?>
