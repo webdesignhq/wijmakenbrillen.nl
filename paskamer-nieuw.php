@@ -91,7 +91,7 @@ get_header();
                                     <div class="flex-row variation" data-modelgroup="<?php echo $product->name; ?>">
                                         <?php foreach ($variations as $key => $value) {
                                             ?>
-                                            <div class="d-flex flex-column" style=" float: left;">
+                                            <div class="col-md-3" style=" float: left;">
                                                 <img data-title="<?php echo $product->name; ?>"
                                                      data-color="<?php echo $value['attributes']['attribute_pa_kleur'] ?>"
                                                      style="width: 100px"
@@ -122,7 +122,7 @@ get_header();
                                             $glass = get_post($g);
                                             $img = get_the_post_thumbnail_url($glass->ID, 'full');
                                             ?>
-                                            <div class="col-md-2">
+                                            <div class="col-md-3">
                                                 <img class="img-rounded glass-colors"
                                                      src="<?php echo $img ?>"
                                                      data-id="<?php echo $g; ?>"
