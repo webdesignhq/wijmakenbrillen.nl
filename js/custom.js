@@ -182,6 +182,7 @@ $().ready(()=> {
       $('#previewimage').attr("src", modelImage);
       showVariations(modelTitle);
       showGlasses(modelGlasses);
+ 	  $("#previewglasses").attr("src", " ");
    }
 
 	function getGlasses(model) {
