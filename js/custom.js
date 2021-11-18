@@ -41,6 +41,12 @@ $().ready(()=> {
 		$('.variations_form').slideToggle();
 	});
 
+    $(".product-color").click(function(e){
+		e.preventDefault();
+		$('.variations_form').slideToggle();
+	});
+    
+
     $(".menu-toggle").click(function(e) {
         $(".mobile__menu__overlay--container").css('left', '0');
     });
