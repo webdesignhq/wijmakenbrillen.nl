@@ -25,8 +25,26 @@ $().ready(()=> {
       $('.slick-next').html('<i class="fa-solid fa-chevron-right"></i>');
       $('.slick-prev').html('<i class="fa-solid fa-chevron-left"></i>');
 
+	 $('.slider-review').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        arrows: false,
+		infinite: true,
+		autoplay: true,
+		centerMode: false,
+		autoplaySpeed: 3000,
+		 responsive: [
+			{
+			  breakpoint: 1024,
+			  settings: {
+				slidesToShow: 1,
+			  }
+			}
+		]
+      });
 
     $(".clickable").click(function(e) {
+		// console.log('click');
         e.preventDefault();
         window.location = $(this).find('a').attr('href');
     });
@@ -40,10 +58,17 @@ $().ready(()=> {
 		e.preventDefault();
 		$('.variations_form').slideToggle();
 	});
-
-    $(".product-color").click(function(e){
+	
+	$(".product-color").click(function(e){
+			// setTimeout(
+			// 	function() 
+			// 	{
+			// 		$('.woocommerce-product-gallery__image').eq(4).addClass('flex-active-slide');
+			// 		$('.woocommerce-product-gallery__image').eq(3).remove();
+			// 		console.log('done');
+			// 	}, 800);
 		e.preventDefault();
-		$('.variations_form').slideToggle();
+		$('.variations_form').show(400);
 	});
     
 
@@ -64,8 +89,8 @@ $().ready(()=> {
 	let color = [];
     $('.filter-item').on('click', function(e) {
         e.preventDefault();
-// 		$('.filter-item').removeClass('active');
-		$(this).addClass('active');
+		$('.filter-item').removeClass('active');
+		$(this).addClass('active-color');
 		
 // 		if (color.includes($(this).attr("data-slug"))){
 // 			color.pop($(this).attr("data-slug"));
@@ -73,26 +98,41 @@ $().ready(()=> {
         	color.push($(this).attr("data-slug"));
 // 		}
         console.log(color);
-		$.ajax({
-		  type: 'POST',
-		  url: '/~brillen/wp-admin/admin-ajax.php',
-		  dataType: 'html',
-		  data: {
-			action: 'filter_projects',
-			color: color
-		  },
-          error: function(xhr, status, error) {
-            var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
-          },
-		  success: function(res) {
-			$('#response').html(res);
-		  }
-		})
+		// $.ajax({
+		//   type: 'POST',
+		//   url: '/~brillen/wp-admin/admin-ajax.php',
+		//   dataType: 'html',
+		//   data: {
+		// 	action: 'filter_projects',
+		// 	color: color
+		//   },
+        //   error: function(xhr, status, error) {
+        //     var err = eval("(" + xhr.responseText + ")");
+        //     alert(err.Message);
+        //   },
+		//   success: function(res) {
+		// 	$('#response').html(res);
+		//   }
+		// })
 	});
 	
 	$('.reset-filters').on('click', function(e) {
 		location.reload();
+	});
+	
+
+		$('.wcpa_form_item input[type="number"]').change(function(e){
+		console.log(e.target.value);
+// 		$(this).value = parseFloat($(this).value).toFixed(2);
+		e.target.value = parseFloat(e.target.value).toFixed(2);
+// 		if(e.target.max != '' && e.target.value > e.target.max){
+// // 			e.target.value = e.target.max;
+// // 			$('.wcpa_form_item input[type="number"]').change()
+// 			$(this).val(e.target.max);
+// 		} else if (e.target.min != '' && e.target.value < e.target.min){
+// // 			e.target.value = e.target.min;
+// 			$(this).val(e.target.min);
+// 		}
 	});
 
 
@@ -158,8 +198,8 @@ $().ready(()=> {
 });
 	$('.product-color').click(function(){
 		let color = $(this).attr("data-name");
-		$('.product-color').removeClass('active');
-		$(this).addClass('active');
+		$('.product-color').removeClass('active-color');
+		$(this).addClass('active-color');
 		console.log(color);
 		$("#pa_kleur").val(color).change();
 	});

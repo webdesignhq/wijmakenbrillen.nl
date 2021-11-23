@@ -229,7 +229,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 	
 <div class="container-xxl">
 			<p class="fitting__title">Wat zeggen onze klanten</p>
-                <div class="d-flex flex-row mt-5">          
+                <div class="d-flex flex-row mt-5 slider slider-review">          
 		<?php   
 						$args = array(
 							'post_type'      => 'review',
@@ -242,7 +242,7 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 							global $product;
 
 					?>
-					<div class="d-flex flex-column" style="background-color: #fff; padding: 40px; margin: 0 40px;">
+					<div class="d-flex flex-column col-12 col-lg-4 m-0 me-3 me-lg-5 " style="background-color: #fff; padding: 40px; margin: 0 40px;">
                     	<h3><?php the_title() ?></h3>
 						<p><?php the_content() ?></p>
 					</div>

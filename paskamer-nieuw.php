@@ -90,12 +90,15 @@ get_header();
 
                                     <div class="flex-row variation" data-modelgroup="<?php echo $product->name; ?>">
                                         <?php foreach ($variations as $key => $value) {
+                                            // var_dump($value);
+                                            $paskamer_image = get_field('paskamer_variation_image', $value['variation_id']);
+                                            // var_dump($paskamer_image);
                                             ?>
                                             <div class="col-md-3" style=" float: left;">
                                                 <img data-title="<?php echo $product->name; ?>"
                                                      data-color="<?php echo $value['attributes']['attribute_pa_kleur'] ?>"
                                                      style="width: 100px"
-                                                     src="<?php echo $value['image']['full_src']; ?>"
+                                                     src="<?php echo $paskamer_image; ?>"
                                                      class="product__image mx-auto" onclick="getModel(this)"/>
                                             </div>
                                             <?php

@@ -40,18 +40,18 @@ if(is_search()){
                 <div class="seperator mx-4 d-lg-inline d-none"></div>
                 <div class="usp d-lg-flex d-none flex-column"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/factory.svg" alt="" /><span>Eigen productie</span></div>
             </div> -->
-            <div class="category__container category__container--archive mx-auto">
+            <div class="category__container category__container--archive mx-auto px-4">
                 <p class="category__headline"><?php single_term_title(); ?></p>
                 <p class="collection__desc mx-auto mt-4">
                 	<?php echo category_description(); ?>
                 </p>
             </div>
-            <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between">
+            <div class="collection__container archive__collection col-12 d-lg-flex d-block flex-row justify-content-between px-4">
                 <div id="filters" class="filter__container col-lg-4 col-12">
                 <p class="filter__title">Filters</p>
 <!--                     <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter" class="col-12"> -->
                         <div class="d-flex flex-column col-12">
-							 <div class="col-6 color__filter mt-3">
+							 <div class="col-lg-6 col-12 color__filter mt-3">
                                 <span class="d-block">Kleur</span>
 
                                     <?php 
@@ -80,7 +80,7 @@ if(is_search()){
 
                             </div>
 							
-												 <div class="col-6 mt-3">
+								<div class="col-lg-6 col-12 mt-3">
                                  <span class="d-block">Vorm</span>
 
                                     <?php 
@@ -93,12 +93,12 @@ if(is_search()){
                                        
                                         ?>
                                         <label class="filter-item" for="shape-<?php echo $name;?>" style="width: 25px; height:25px;"> <input type="checkbox" id="shape-<?php echo $name;?>" name="shape" data-shape="<?php echo $slug;?>"> <?php echo $name;?> </label>
+									  <label class="filter-item" for="<?php echo $name;?>" data-slug="<?php echo $name;?>"> <input type="checkbox" id="<?php echo $slug;?>" name="kleur" > <span class="color__filter--lable" style="background-color:<?php echo $hex; ?>;"><?php echo $name; ?></span> </label>
                                 <?php
                                     }
                                 ?>
 
                             </div>
-							
 							
                             <div class="col-12 ">
                                 <input type="hidden" name="action" value="myfilter">

@@ -16,24 +16,25 @@ function website_setup()
 		'primary'   => __( 'Primary Menu', 'website' ),
 		'secondary' => __( 'Secondary Menu', 'website' ),
 		'footer_moreinfo' => __( 'Footer Meer informatie', 'website' ),
-		'footer_categories' => __( 'Footer Categorieën', 'website' )
+		'footer_categories' => __( 'Footer Categorie&#1043;&#1087;&#1111;&#1029;n', 'website' )
 	) );
 	
 	if ( ! isset ( $content_width) )
     $content_width = 1200;
 
-	add_theme_support( 'custom-header' );
-	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-formats', array( 'aside', 'gallery' ) );
 	add_theme_support( 'custom-background' );	
 	add_theme_support( 'post-thumbnails' ); 
-	add_theme_support('woocommerce');
 	add_theme_support( 'wc-product-gallery-slider' );
-}
+        // add_theme_support('woocommerce');
+}	
 endif; // website setup
 add_action( 'after_setup_theme', 'website_setup' );
 
-
+add_action( 'init', 'my_remove_lightbox' );	 	 
+function my_remove_lightbox() {	 	 
+   remove_theme_support( 'wc-product-gallery-lightbox' );	 	 
+}
 
 function website_custom_logo_setup() {
     $defaults = array(
@@ -259,6 +260,7 @@ add_filter( 'dgwt/wcas/form/magnifier_ico', function ( $html, $class ) {
 	return $html;
   }, 10, 2 );
 
+
 function custom_checkboxes_acf($field) {
 	
 	$glassesArray = array();
@@ -340,14 +342,266 @@ function add_product_colors() {
 	</div>
 </div>
 <div class="col-12 d-flex flex-column">
-	<div class="d-flex col-12">
-		<a href="/~brillen/paskamer-nieuw" class="single_add_to_cart_button ">Paskamer</a><a href="" class="single_add_to_cart_button ms-2 choose-glasses">Kies je glazen</a>
+	<div class="d-flex flex-lg-row flex-column col-12">
+		<a href="/~brillen/paskamer-nieuw" class="single_add_to_cart_button ">Paskamer</a><a href="" class="single_add_to_cart_button ms-lg-2 choose-glasses">Kies je glazen</a>
 	</div>
 </div>
 <?php
 
 };     
 add_action( 'woocommerce_single_product_summary', 'add_product_colors', 25 ); 
+
+ 
+function yourtheme_setup() {
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
+add_action( 'after_setup_theme', 'yourtheme_setup' );
+
+function themename_widgets_init() {
+    register_sidebar( array(
+        'name'          => __( 'Primary Sidebar', 'theme_name' ),
+        'id'            => 'sidebar-1',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</aside>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>',
+    ) );
+}
+add_action('widgets_init', 'themename_widgets_init');
+
+
+// Disables the block editor from managing widgets in the Gutenberg plugin.
+add_filter( 'gutenberg_use_widgets_block_editor', '__return_false' );
+// Disables the block editor from managing widgets.
+add_filter( 'use_widgets_block_editor', '__return_false' );
+
+
+
+function show_colors(){
+	global $product;
+?>
+	<div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
+        <?php 
+			$attributes = $product->get_attributes();
+			$terms = get_the_terms( $product->id, 'pa_kleur');
+		
+			foreach($terms as $term){
+				$singleID = $term->term_id;
+				$singleTax = $term->taxonomy;
+											
+				$hex = get_field('colorpicker', $singleTax . '_' . $singleID);
+							
+				if($hex == ''){
+					$hex = '#000';
+				};
+								
+		?>
+	<div style="background-color: <?php echo $hex;?>; width: 25px; height:25px;"></div>
+		 <?php
+			}
+		?>
+    </div>
+<?php
+}
+
+add_action('woocommerce_after_shop_loop_item_title', 'show_colors');
+
+
+function product_title(){
+	global $product;?>
+	<h1 class="product_name"><?php echo get_the_title($product->ID); ?></h1>
+<?php
+}
+add_action( 'woocommerce_single_product_summary', 'product_title', 5 );
+
+function add_to_favorites(){ ?>
+	<a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
+<?php
+}
+add_action('woocommerce_before_shop_loop_item', 'add_to_favorites');
+
+
+add_filter( 'woocommerce_product_single_add_to_cart_text', 'woocommerce_custom_single_add_to_cart_text' ); 
+function woocommerce_custom_single_add_to_cart_text() {
+	$text = 'Bekijk product';
+	if(is_product()){
+		$text = 'In winkelwagen';
+	}
+    return __( $text, 'woocommerce' ); 
+}
+
+// To change add to cart text on product archives(Collection) page
+add_filter( 'woocommerce_product_add_to_cart_text', 'woocommerce_custom_product_add_to_cart_text' );  
+function woocommerce_custom_product_add_to_cart_text() {
+    return __( 'Bekijk product', 'woocommerce' );
+}
+
+add_filter( 'woocommerce_loop_add_to_cart_link', 'replacing_add_to_cart_button', 10, 2 );
+function replacing_add_to_cart_button( $button, $product  ) {
+    $button_text = __("Bekijk product", "woocommerce");
+    $button = '<a class="button add_to_cart_button" href="' . $product->get_permalink() . '">' . $button_text . '</a>';
+
+    return $button;
+}
+
+function after_single_summary(){
+	global $product; ?>
+	<div class="category__container-1 size__container--single mx-auto" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
+                <?php 
+					$width = $product->get_attribute('breedte-glas');
+					$height = $product->get_attribute('hoogte-glas');
+					$center = $product->get_attribute('middenafstand');
+					$fullWidth = $product->get_attribute('totale-breedte');
+					$neusbrug = $product->get_attribute('neusbrug');
+                ?>
+                <h2 class="text-center">Afmetingen</h2>
+                <div class="categories d-lg-flex d-block flex-row justify-content-between mt-4">
+                    <div class="col-lg-2 col-12 me-0 category d-flex flex-column text-center justify-content-center">
+						<img class="effect-multiply" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/breedte-glas.png"/>
+                        <span>Breedte glas</span>
+                        <span class="mt-2"><?php echo $width; ?></span>
+                    </div>
+                    <div class="col-lg-2 col-12 mx-0 category d-flex flex-column text-center justify-content-center" >
+						<img class="effect-multiply" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/hoogte-glas.png"/>
+                        <span>Hoogte glas</span>
+						<span class="mt-2"><?php echo $height; ?></span>
+                    </div>
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center" >                    
+                        <img class="effect-multiply" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/middenafstand.png"/>
+						<span>Middenafstand</span>
+						<span class="mt-2"><?php echo $center; ?></span>
+                    </div>
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center" >
+						<img class="effect-multiply" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/totale-breedte.png"/>
+                        <span>Totale breedte</span>
+						<span class="mt-2"><?php echo $fullWidth; ?></span>
+                    </div>
+                    <div class="col-lg-2 col-12 ms-0 category d-flex flex-column text-center justify-content-center">
+						<img class="effect-multiply" src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/neusbrug.png"/>
+                        <span>Neusbrug</span>
+						<span class="mt-2"><?php echo $neusbrug; ?></span>
+                    </div>
+                </div>
+        </div>
+<?php 
+}
+add_action('woocommerce_after_single_product_summary', 'after_single_summary');
+
+// Add "Product Variation" location rule values
+function my_acf_location_rule_values_post_type($choices){
+
+	$keys = array_keys($choices);
+	$index = array_search('product', $keys);
+
+	$position = $index === false ? count($choices) : $index + 1;
+
+	$choices = array_merge(
+		array_slice($choices, 0, $position),
+		array('product_variation' => __('Product Variation', 'auf')),
+		array_slice($choices, $position)
+	);
+
+	return $choices;
+}
+
+add_filter('acf/location/rule_values/post_type', 'my_acf_location_rule_values_post_type');
+
+
+// Add "Product Variation" location rule match
+function my_acf_location_rule_match_post_type($match, $rule, $options, $field_group){
+
+	if ($rule['value'] == 'product_variation') {
+
+		$post_type = $options['post_type'];
+
+		if ($rule['operator'] == "==")
+			$match = $post_type == $rule['value'];
+
+		elseif ($rule['operator'] == "!=")
+			$match = $post_type != $rule['value'];
+	}
+
+	return $match;
+}
+
+add_filter('acf/location/rule_match/post_type', 'my_acf_location_rule_match_post_type', 10, 4);
+
+
+// Render fields at the bottom of variations - does not account for field group order or placement.
+add_action( 'woocommerce_product_after_variable_attributes', function( $loop, $variation_data, $variation ) {
+    global $abcdefgh_i; // Custom global variable to monitor index
+    $abcdefgh_i = $loop;
+    // Add filter to update field name
+    add_filter( 'acf/prepare_field', 'acf_prepare_field_update_field_name' );
+    
+    // Loop through all field groups
+    $acf_field_groups = acf_get_field_groups();
+    foreach( $acf_field_groups as $acf_field_group ) {
+        foreach( $acf_field_group['location'] as $group_locations ) {
+            foreach( $group_locations as $rule ) {
+                // See if field Group has at least one post_type = Variations rule - does not validate other rules
+                if( $rule['param'] == 'post_type' && $rule['operator'] == '==' && $rule['value'] == 'product_variation' ) {
+                    // Render field Group
+                    acf_render_fields( $variation->ID, acf_get_fields( $acf_field_group ) );
+                    break 2;
+                }
+            }
+        }
+    }
+    
+    // Remove filter
+    remove_filter( 'acf/prepare_field', 'acf_prepare_field_update_field_name' );
+}, 10, 3 );
+
+// Filter function to update field names
+function  acf_prepare_field_update_field_name( $field ) {
+    global $abcdefgh_i;
+    $field['name'] = preg_replace( '/^acf\[/', "acf[$abcdefgh_i][", $field['name'] );
+    return $field;
+}
+    
+// Save variation data
+add_action( 'woocommerce_save_product_variation', function( $variation_id, $i = -1 ) {
+    // Update all fields for the current variation
+    if ( ! empty( $_POST['acf'] ) && is_array( $_POST['acf'] ) && array_key_exists( $i, $_POST['acf'] ) && is_array( ( $fields = $_POST['acf'][ $i ] ) ) ) {
+        foreach ( $fields as $key => $val ) {
+            update_field( $key, $val, $variation_id );
+        }
+    }
+}, 10, 2 );
+
+add_action('acf/input/admin_footer', 'my_acf_input_admin_footer');
+
+function my_acf_input_admin_footer() {
+?>
+  <script type="text/javascript">
+	(function($) {
+	  $(document).on('woocommerce_variations_loaded', function () {
+		acf.do_action('append', $('#post'));
+	  })
+	})(jQuery);	
+  </script>
+<?php      
+}
+
+// function custom_tax_text(){
+
+// 	$pc_info = get_field('more_info');
+// 	echo $pc_info;
+// }
+
+// add_action('woocommerce_after_shop_loop', 'custom_tax_text', 10);
+
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
+remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_description' );
+ 
+add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_description' );
+add_action( 'woocommerce_after_main_content', 'woocommerce_product_archive_description' );
+
+
+
 ?>
 
 
