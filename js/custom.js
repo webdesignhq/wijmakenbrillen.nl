@@ -73,11 +73,12 @@ $().ready(()=> {
     
 
     $(".menu-toggle").click(function(e) {
-        $(".mobile__menu__overlay--container").css('left', '0');
+		$(".mobile__menu__overlay--container").toggleClass('activeMenu')
+        // $(".mobile__menu__overlay--container").css('left', '0');
     });
 
     $(".menu-close").click(function(e) {
-        $(".mobile__menu__overlay--container").css('left', '-100%');
+        // $(".mobile__menu__overlay--container").css('left', '-100%');
     });
 
     // $("#dgwt-wcas-search-input-1").focus(function(e) {
@@ -92,28 +93,10 @@ $().ready(()=> {
 		$('.filter-item').removeClass('active');
 		$(this).addClass('active-color');
 		
-// 		if (color.includes($(this).attr("data-slug"))){
-// 			color.pop($(this).attr("data-slug"));
-// 		} else{
         	color.push($(this).attr("data-slug"));
 // 		}
         console.log(color);
-		// $.ajax({
-		//   type: 'POST',
-		//   url: '/~brillen/wp-admin/admin-ajax.php',
-		//   dataType: 'html',
-		//   data: {
-		// 	action: 'filter_projects',
-		// 	color: color
-		//   },
-        //   error: function(xhr, status, error) {
-        //     var err = eval("(" + xhr.responseText + ")");
-        //     alert(err.Message);
-        //   },
-		//   success: function(res) {
-		// 	$('#response').html(res);
-		//   }
-		// })
+
 	});
 	
 	$('.reset-filters').on('click', function(e) {
@@ -121,18 +104,43 @@ $().ready(()=> {
 	});
 	
 
+		let attrMax;
+		let attrMin;
+		$('.wcpa_form_item input[type="number"]').focus((e)=>{
+			attrMax = e.target.max;
+			attrMin = e.target.min;
+			console.log(attrMax, attrMin);
+		})
 		$('.wcpa_form_item input[type="number"]').change(function(e){
 		console.log(e.target.value);
-// 		$(this).value = parseFloat($(this).value).toFixed(2);
-		e.target.value = parseFloat(e.target.value).toFixed(2);
-// 		if(e.target.max != '' && e.target.value > e.target.max){
-// // 			e.target.value = e.target.max;
-// // 			$('.wcpa_form_item input[type="number"]').change()
-// 			$(this).val(e.target.max);
-// 		} else if (e.target.min != '' && e.target.value < e.target.min){
-// // 			e.target.value = e.target.min;
-// 			$(this).val(e.target.min);
-// 		}
+		attrMax = e.target.max;
+		attrMin = e.target.min;
+		console.log(attrMax, attrMin);
+		
+		if((attrMax !== undefined && attrMax !== false && attrMax !== '') || (attrMin !== undefined && attrMin !== false && attrMin !== '')){
+			if(e.target.value > attrMax){
+				$(this).val(attrMax);
+			}else if(attrMin < 0){
+				console.log('ja')
+				if(e.target.value > attrMin){
+					console.log('ja2')
+					$(this).val(attrMin);
+				}
+			}else if(attrMin >= 0){
+				if(e.target.value < attrMin){
+					$(this).val(attrMin);
+				}
+		}}else{
+
+		}  
+
+		if($(e.target).hasClass('no-parse')){
+			e.target.value = parseFloat(e.target.value).toFixed(0);
+		}else if($(e.target).hasClass('parse-1')){
+			e.target.value = parseFloat(e.target.value).toFixed(1);
+		}else{
+			e.target.value = parseFloat(e.target.value).toFixed(2);
+		}
 	});
 
 
@@ -151,29 +159,12 @@ $().ready(()=> {
         });
     } );
 
-    // $('#filter').submit(function(){
-	// 	var filter = $('#filter');
-	// 	$.ajax({
-	// 		url:filter.attr('action'),
-	// 		data:filter.serialize(), // form data
-	// 		type:filter.attr('method'), // POST
-	// 		beforeSend:function(xhr){
-	// 			filter.find('button').text('Processing...'); // changing the button label
-	// 		},
-	// 		success:function(data){
-	// 			filter.find('button').text('Filter toepassen'); // changing the button label back
-	// 			$('#response').html(data); // insert data
-	// 		}
-	// 	});
-	// 	return false;
-	// });
-	
 	// Set constraints for the video stream
 	var constraints = { video: { facingMode: "user" }, audio: false };// Define constants
 	const cameraView = document.querySelector("#camera--view"),
-		cameraOutput = document.querySelector("#camera--output"),
-		cameraSensor = document.querySelector("#camera--sensor"),
-		cameraTrigger = document.querySelector("#camera--trigger")// Access the device camera and stream to cameraView
+	cameraOutput = document.querySelector("#camera--output"),
+	cameraSensor = document.querySelector("#camera--sensor"),
+	cameraTrigger = document.querySelector("#camera--trigger")// Access the device camera and stream to cameraView
 	function cameraStart() {
 		navigator.mediaDevices
 			.getUserMedia(constraints)
@@ -192,16 +183,29 @@ $().ready(()=> {
 		cameraOutput.src = cameraSensor.toDataURL("image/webp");
 		cameraOutput.classList.add("taken");
 	};// Start the video stream when the window loads
-	window.addEventListener("load", cameraStart, false);
+	window.onload = cameraStart();
 
 
 });
+	let color;
+	let varID;
+	let link;
+	$('input[name="variation_id"]').change(function() {
+		varID = $('input[name="variation_id"]').val();
+		link = '/~brillen/paskamer-nieuw#' + varID;
+		$("#fitting-room").attr('href', link);
+		console.log(color, varID);
+	});
+
 	$('.product-color').click(function(){
-		let color = $(this).attr("data-name");
-		$('.product-color').removeClass('active-color');
-		$(this).addClass('active-color');
-		console.log(color);
-		$("#pa_kleur").val(color).change();
+			color = $(this).attr("data-name");
+			
+			$('.product-color').removeClass('active-color');
+			$(this).addClass('active-color');
+	
+			$("#pa_kleur").val(color).change();
+			i = 0;
+		
 	});
 
 
@@ -216,7 +220,7 @@ $().ready(()=> {
       $(".glass-colors").hide();
       decoded.forEach(function(glass) {
          $(`.glass-colors[data-id='${glass}']`).show();
-      });
+      });	 
    }
 
    function getModel(model) {
@@ -224,7 +228,10 @@ $().ready(()=> {
       var modelColor = $(model).attr("data-color");
       var modelImage = $(model).attr("src");
   	  var modelGlasses = $(model).attr("data-glasses");
+	  var modelLink = $(model).attr("data-link");
+	  console.log(modelLink);
       document.getElementById("previewtext").innerHTML = "<h5>(Gekozen model: " + modelTitle + " - " + modelColor + ")</h5>";
+	  $('#myAnchorA').attr('href', modelLink);
       $('#previewimage').attr("src", modelImage);
       showVariations(modelTitle);
       showGlasses(modelGlasses);
@@ -232,10 +239,25 @@ $().ready(()=> {
    }
 
 	function getGlasses(model) {
- 		 var modelGlasses2 = $(model).attr("src");
+ 		var modelGlasses2 = $(model).attr("src");
   		var modelMasks = $(model).attr("style");
 		console.log(modelGlasses2);
 		console.log(modelMasks);
 	   $('#previewglasses').attr("src", modelGlasses2);
 	   $('#previewglasses').attr("style", modelMasks);
 	}
+
+	$().ready(()=> {
+		if (window.location.href.indexOf("#") > -1){
+			let var_id = window.location.href;
+			var_id = var_id.split("#").pop();
+			let variation = $(".formSpan12").find("[data-variation='" + var_id +"']");
+			console.log(var_id, variation);
+			getModel(variation);
+			$('.transparant-glass').hide();
+		}
+	});
+
+	$("#showFilters").click(()=>{
+		$("#sidebar-primary").slideToggle();
+	});

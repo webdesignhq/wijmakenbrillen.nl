@@ -29,7 +29,10 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 <style>
-	header, footer{
+	footer, .shop__search{
+		display: none!important;
+	}
+	.menu-hoofdmenu-container{
 		display: none;
 	}
 </style>
@@ -42,8 +45,8 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 						<?php do_action( 'woocommerce_checkout_before_customer_details' ); ?>
 
-						<div class="col-set col-12 d-flex flex-row" id="customer_details">
-							<div class="col-6">
+						<div class="col-set col-12 d-flex flex-row flex-wrap" id="customer_details">
+							<div class="col-lg-6 col-12">
 								<?php do_action( 'woocommerce_checkout_billing' ); ?>
 							</div>
 
@@ -61,7 +64,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 					
 					<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
-					<div id="order_review" class="woocommerce-checkout-review-order offset-1 col-4">
+					<div id="order_review" class="woocommerce-checkout-review-order offset-lg-1 col-lg-4 col-12 mt-lg-0 mt-5">
 						<?php do_action( 'woocommerce_checkout_order_review' ); ?>
 					</div>
 

@@ -53,9 +53,9 @@
 					<li>Schutstraat 12-01</li>
 					<li>7901 EC Hoogeveen</li>
 					<div class="socials__container col-4 mt-4 d-flex flex-row justify-content-between">
-					<a href="https://api.whatsapp.com/send/?phone=31612928592"><i class="fa-brands fa-whatsapp"></i></a>
-					<a href="https://www.facebook.com/wijmakenbrillen.nl/"><i class="fa-brands fa-facebook"></i></a>
-					<!-- <a  href="#"><i class="fa-brands fa-instagram"></i></a> -->
+					<a href="https://api.whatsapp.com/send/?phone=31612928592" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+					<a href="https://www.facebook.com/wijmakenbrillen.nl/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+					<a href="https://www.instagram.com/wijmakenbrillen.nl/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 					</div>
 				</ul>
 

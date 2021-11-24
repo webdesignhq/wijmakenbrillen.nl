@@ -24,8 +24,8 @@ get_header();
             </div>
 
 			<div class="category__container mx-auto">
-                <p class="category__headline">Laat je ogen spreken </p>
-				<p>In huis ontworpen en geproduceerde monturen, in verschillende stijlen en geschikt voor iedere gelegenheid.  Ontdek onze kleurrijke collectie brilmonturen en laat je ogen spreken. Een bril online kopen is nog nooit zo leuk geweest. Leverbaar vanaf 169,- inclusief ontspiegelde glazen op sterkte.</p>
+                <p class="category__headline"><?php echo get_field('hp_titel_1'); ?></p>
+				<p><?php echo get_field('hp_paragraph_1'); ?></p>
                 <div class="categories d-lg-flex col-12 d-block flex-row justify-content-between mt-4">
                     <div class="col-lg-4 col-11 me-lg-2 mx-auto mt-3 category clickable" style=" background-image: url('<?php echo get_template_directory_uri(); ?>/assets/img/dames_brillen.png');">
                         <!-- <a href="" class="button">Damesbrillen</a> -->
@@ -63,29 +63,23 @@ get_header();
 
 <div class="handmade__container d-lg-flex d-block flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/usp_bg.svg);">
             <div class="usp col-lg-5 col-12 offset-lg-1 offset-0">
-                <p>100% handgemaakt</p>
+                <span><?php echo get_field('hp_titel_2'); ?></span>
                 <div class="mt-5">
-					Onze vrolijke en lichte brillen zijn vervaardigd in onze eigen atelier in Hoogeveen.
-De lage prijzen zijn mogelijk doordat wij de gehele collectie zelf produceren.
-Hierdoor kunnen we snel op de laatste trends in spelen.  
-Ben je nieuwsgierig? Kijk dan op onze “over ons pagina”
-
+				<?php echo get_field('hp_paragraph_2'); ?>
 				</div>
             </div>
-            <div class="usp__image col-lg-6 col-12">
+            <div class="usp__image ms-lg-5 ms-0 mt-lg-0 mt-3 col-lg-6 col-12">
                 <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/dames_brillen.png');"></div>
             </div>
 </div>
 
 <div class="collection__container">
             <div class="col-12 text-center">
-                <h2>Onze collectie</h2>
-                <p class="collection__desc mx-auto mt-4">Onze brillen zijn gemaakt van acetaat en hebben een smallere rand en is daardoor lichter.
-De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speciaal geselecteerde kleuren acetaat zijn de monturen voor elke gelegenheid geschikt
-</p>
+                <h2 class="category__headline"><?php echo get_field('hp_titel_3'); ?></h2>
+                <div class="collection__desc px-lg-0 px-3 mx-auto mt-4"><?php echo get_field('hp_paragraph_3'); ?></div>
             </div>
 
-			<div class="product__container col-12 px-5 my-5 d-lg-flex d-block flex-row">
+			<div class="product__container col-12 px-lg-5 px-3 my-5 d-flex flex-row justify-content-between">
 
 			<?php  
 				$args = array(
@@ -105,8 +99,8 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 					<span class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></span>
                     <!-- <img src="/assets/img/product.png" alt="" /> -->
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
-                    <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
-                    <p class="product__color--name"><?php the_title() ?></p>
+                    <!-- <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p> -->
+                    <p class="product__category--title"><?php the_title() ?></p>
                    	 <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
 						<?php 
 							$attributes = $product->get_attributes();
@@ -149,12 +143,9 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
                 <div class="img" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/fitting.png');"></div>
             </div>
             <div class="fitting__info col-lg-5 col-12 offset-lg-1 offset-0">
-                <p class="fitting__title">Digitale paskamer</p>
+                <p class="fitting__title"><?php echo get_field('hp_titel_4'); ?></p>
                 <div class="fitting__desc">
-                    <p>Wil jij weten hoe leuk onze brillen staan? 
-					Of wil je ze zien met zonnebrilglazen?
-					Je kan ze bekijken in onze digitale paskamer.
-					Ook de maten kan je hier bekijken.
+                    <p><?php echo get_field('hp_paragraph_4'); ?>
 					</p>
                 </div>
             </div>
@@ -162,11 +153,11 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
 
 <div class="collection__container" style="background-image: url('<?php bloginfo('template_directory'); ?>/assets/img/eyes.png');">
             <div class="col-12 text-center">
-                <h2>Onze bestverkochte brillen</h2>
+                <h2 class="category__headline"><?php echo get_field('hp_titel_5'); ?></h2>
                 <!-- <p class="collection__desc mx-auto mt-4">Speciaal voor jou hebben wij een super leuke en vrolijke collectie ontworpen met vrolijke kleuren.</p> -->
             </div>
 
-			<div class="product__container col-12 px-5 my-5 d-lg-flex d-block flex-row">
+			<div class="product__container col-12 px-3 px-lg-5 my-5 d-flex flex-row justify-content-between">
 
 			<?php  
 				$args = array(
@@ -188,8 +179,8 @@ De allergievrije metalen veren zorgen voor een beter draagcomfort. Door de speci
                     <a href="#" class="product__favorites--button"><?php echo do_shortcode('[yith_wcwl_add_to_wishlist label=""]'); ?></a>
                     <!-- <img src="/assets/img/product.png" alt="" /> -->
 					<img src="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" class="product__image mx-auto" />
-                    <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p>
-                    <p class="product__color--name"><?php the_title() ?></p>
+                    <!-- <p class="product__category--title"><?php echo wc_get_product_category_list($product->get_id()) ?></p> -->
+                    <p class="product__category--title"><?php the_title() ?></p>
                     <div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
        						<?php 
 							$attributes = $product->get_attributes();

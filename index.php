@@ -15,10 +15,10 @@ if ( is_product_category() ){
 }
 
 ?>
-<div id="content">
+<div id="content" <?php if (is_shop() || is_product_category() ) {?> class="archive" <?php } ?>>
 	
 <?php if (is_shop() || is_product_category() ) {?> 
-	<div class="hero hero-index" style="background-image: url('<?php if(is_shop()):?> <?php bloginfo('template_directory'); ?>/assets/img/hero.png'); <?php else: echo $image; endif?>'); background-position: center;">
+	<div class="hero hero-index" style="background-image: url('<?php if(is_shop()):?> <?php echo get_field('shoppage_header_image')?>'); <?php else: echo $image; ?>');<?php endif ?> background-position: center;">
 		<div class="welcome__message d-flex flex-column">
 			<div class="welcome__message--1"><span>Alle</span></div>
 			<div class="welcome__message--2"><span><?php if(is_shop()):?> Brillen <?php else: single_term_title(); endif?></span></div>
@@ -34,9 +34,10 @@ if ( is_product_category() ){
 		<?php } ?>
 		<div class="d-flex <?php if (is_shop() || is_product_category() ) {?> col-lg-8 col-12 offset-lg-2 product-archive<?php } elseif(is_product()) { ?> single-product <?php } else { ?> col-12 <?php } ?> flex-column" >
 			<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			<?php if (is_shop() || is_product() ) {?>
-			
-			<?php } else {?>
+			<?php if (is_shop() || is_product() || is_cart() || is_checkout() ) {
+				if (is_shop() || is_product_category()){ ?>
+					<a class="button" id="showFilters">Filteren</a>
+			<?php }} else {?>
 				<h1><?php the_title(); ?></h1>
 			<?php } ?> 	
 

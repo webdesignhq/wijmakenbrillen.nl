@@ -343,7 +343,7 @@ function add_product_colors() {
 </div>
 <div class="col-12 d-flex flex-column">
 	<div class="d-flex flex-lg-row flex-column col-12">
-		<a href="/~brillen/paskamer-nieuw" class="single_add_to_cart_button ">Paskamer</a><a href="" class="single_add_to_cart_button ms-lg-2 choose-glasses">Kies je glazen</a>
+		<a href="/~brillen/paskamer-nieuw" class="single_add_to_cart_button" id="fitting-room" target="_blank">Paskamer</a><a href="" class="single_add_to_cart_button ms-lg-2 choose-glasses">Kies je glazen</a>
 	</div>
 </div>
 <?php
@@ -382,7 +382,7 @@ add_filter( 'use_widgets_block_editor', '__return_false' );
 function show_colors(){
 	global $product;
 ?>
-	<div class="product__colors--container mx-auto d-flex flex-row justify-content-between py-4">
+	<div class="product__colors--container mx-3 d-flex flex-row justify-content-between py-4">
         <?php 
 			$attributes = $product->get_attributes();
 			$terms = get_the_terms( $product->id, 'pa_kleur');
@@ -600,7 +600,34 @@ remove_action( 'woocommerce_archive_description', 'woocommerce_product_archive_d
 add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_description' );
 add_action( 'woocommerce_after_main_content', 'woocommerce_product_archive_description' );
 
+function remove_zeroes_from_price($price) {
+$price = str_replace('.00', ',-', $price);
+return $price;}
 
+add_filter('woocommerce_get_price_html', 'remove_zeroes_from_price');
+add_filter('woocommerce_cart_subtotal', 'remove_zeroes_from_price');
+add_filter('woocommerce_cart_item_price', 'remove_zeroes_from_price');
+add_filter('woocommerce_cart_item_subtotal', 'remove_zeroes_from_price');
+add_filter('woocommerce_single_product_summary', 'remove_zeroes_from_price');
+add_filter('woocommerce_cart_contents_total', 'remove_zeroes_from_price');
+
+
+
+
+// Remove all currency symbols
+ function sww_remove_wc_currency_symbols( $currency_symbol, $currency ) {
+ $currency_symbol = '';
+ return $currency_symbol;}
+add_filter('woocommerce_currency_symbol', 'sww_remove_wc_currency_symbols',     10, 2);
+add_filter('woocommerce_cart_totals_order_total_html',     'remove_zeroes_from_price');
+
+
+function checkout_logo(){
+ ?>
+ 
+ <?php
+}
+add_filter('woocommerce_before_checkout_form', 'checkout_logo');
 
 ?>
 

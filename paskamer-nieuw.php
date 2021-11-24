@@ -23,19 +23,22 @@ get_header();
                                             src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png"
                                             alt="Plaat" width="100%" height="300"/></div>
 
-                                <div class="absoluteVP3"><img src="//:0" alt="" id="camera--output"> <img
+                                <div class="absoluteVP3">
+                                <div class="position-relative">
+                                    <img src="//:0" alt="" id="camera--output"> 
+                                        <img
                                             id="previewimage"
                                             src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png">
                                     <img id="previewglasses"
                                          src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/G6.png"
-                                         style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/transparant.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"/>
+                                         style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/transparant.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;f"/>
+                                    </div>
                                 </div>
                             </main>
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <h5><strong><span id="Totaal">169</span>,00</strong></h5>
-                        <p><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar
+                        <p id="previewlink"><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar
                                 de gegevens van het gekozen model te gaan.</a></p>
                         <p id="previewtext">(Gekozen model voor snelkoppeling: Anna zwart)</p>
                         <div class="row">
@@ -71,7 +74,7 @@ get_header();
                                     
                                     ?>
 
-                                    <div class="col-md-3" style="float: left;">
+                                    <div class="col-3" style="float: left;">
                                         <img style="width: 100px" data-title="<?php echo $productName ?>"
                                              data-color="Zwart" src="<?php echo $img ?>"
                                              data-glasses='<?php echo json_encode($glassIDs); ?>'
@@ -94,12 +97,15 @@ get_header();
                                             $paskamer_image = get_field('paskamer_variation_image', $value['variation_id']);
                                             // var_dump($paskamer_image);
                                             ?>
-                                            <div class="col-md-3" style=" float: left;">
+                                            <div class="col-3" style=" float: left;">
                                                 <img data-title="<?php echo $product->name; ?>"
                                                      data-color="<?php echo $value['attributes']['attribute_pa_kleur'] ?>"
                                                      style="width: 100px"
                                                      src="<?php echo $paskamer_image; ?>"
-                                                     class="product__image mx-auto" onclick="getModel(this)"/>
+                                                     data-link= "<?php echo get_permalink($value['variation_id']); ?>"
+                                                     data-variation= "<?php echo $value['variation_id']; ?>"
+                                                     data-glasses='<?php echo json_encode($glassIDs); ?>'
+                                                     class="product__image mx-auto" onclick="getModel(this)" />
                                             </div>
                                             <?php
                                         } ?>
@@ -119,17 +125,17 @@ get_header();
 
                                     ?>
 									<div class="container">
-                                    <div class="row" data-modelgroup="<?php echo $product->name; ?>">
+                                    <div class="row glasses-cont" data-modelgroup="<?php echo $product->name; ?>">
                                         <?php
                                         foreach ($glasses as $g) {
                                             $glass = get_post($g);
                                             $img = get_the_post_thumbnail_url($glass->ID, 'full');
                                             ?>
-                                            <div class="col-md-3">
+                                            <div class="col-3">
                                                 <img class="img-rounded glass-colors"
                                                      src="<?php echo $img ?>"
                                                      data-id="<?php echo $g; ?>"
-                                                     style="-webkit-mask-image: url('<?php echo $imagemask; ?>'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat;"
+                                                     style="-webkit-mask-image: url('<?php echo $imagemask; ?>'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"
                                                      onclick="getGlasses(this);"/>
                                             </div>
                                             <?php
@@ -147,7 +153,7 @@ get_header();
                             <p>
                                 <?php endif ?>
                         </div>
-                        <!--<a href="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/product/anna" class="btn btn-primary single_add_to_cart_button">Bestel direct</a>-->
+                        <span class="button mt-3" onclick="getGlasses($(`.glass-colors[data-id='801']`));">Transparante glazen</span>
                     </div>
 
                 </div>
