@@ -104,42 +104,53 @@ $().ready(()=> {
 	});
 	
 
+// Glass prescription form scripts
+	
 		let attrMax;
 		let attrMin;
+		// let minBound;
+		// let maxBound;
 		$('.wcpa_form_item input[type="number"]').focus((e)=>{
 			attrMax = e.target.max;
 			attrMin = e.target.min;
-			console.log(attrMax, attrMin);
+			console.log(attrMin, attrMax);
 		})
 		$('.wcpa_form_item input[type="number"]').change(function(e){
 		console.log(e.target.value);
-		attrMax = e.target.max;
-		attrMin = e.target.min;
-		console.log(attrMax, attrMin);
-		
-		if((attrMax !== undefined && attrMax !== false && attrMax !== '') || (attrMin !== undefined && attrMin !== false && attrMin !== '')){
-			if(e.target.value > attrMax){
-				$(this).val(attrMax);
-			}else if(attrMin < 0){
-				console.log('ja')
-				if(e.target.value > attrMin){
-					console.log('ja2')
-					$(this).val(attrMin);
-				}
-			}else if(attrMin >= 0){
-				if(e.target.value < attrMin){
-					$(this).val(attrMin);
-				}
-		}}else{
 
-		}  
+		if((attrMax !== undefined && attrMax !== false && attrMax !== '') || (attrMin !== undefined && attrMin !== false && attrMin !== '')){
+			let max = parseInt($(this).attr('max'));
+			let min = parseInt($(this).attr('min'));
+
+			// maxBound = $(this).val() + e.target.step;
+			// minBound = $(this).val() - e.target.step;
+
+			// if(Number.isInteger($(this).val())){
+			// 	console.log('int');
+			// }else{
+			// 	if($(this).val() < e.target.step){
+
+			// 	}
+			// }
+
+			// console.log(minBound, maxBound);
+
+			if ($(this).val() > max)
+			{
+				$(this).val(max);
+			}
+			else if ($(this).val() < min)
+			{
+				$(this).val(min);
+			}       
+		}   
 
 		if($(e.target).hasClass('no-parse')){
-			e.target.value = parseFloat(e.target.value).toFixed(0);
+			e.target.value =(Math.round(parseFloat(e.target.value) * 4) / 4).toFixed(0);
 		}else if($(e.target).hasClass('parse-1')){
-			e.target.value = parseFloat(e.target.value).toFixed(1);
+			e.target.value = (Math.round(parseFloat(e.target.value) * 4) / 4).toFixed(1);
 		}else{
-			e.target.value = parseFloat(e.target.value).toFixed(2);
+			e.target.value = (Math.round(parseFloat(e.target.value) * 4) / 4).toFixed(2);
 		}
 	});
 
@@ -151,10 +162,9 @@ $().ready(()=> {
             if ( timeout !== undefined ) {
                 clearTimeout( timeout );
             }
-
             timeout = setTimeout(function() {
                 $("[name='update_cart']").trigger("click");
-            }, 750 ); // 1 second delay, half a second (500) seems comfortable too
+            }, 750 );
 
         });
     } );

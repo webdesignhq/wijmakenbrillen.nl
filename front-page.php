@@ -4,7 +4,7 @@
 get_header();
 ?>
 <?php is_front_page(); ?>
-<div class="hero" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/hero.png);">
+<div class="hero" style="background-image: url(<?php echo get_field('homepage_image'); ?>);">
             <div class="welcome__message d-flex flex-column">
                 <div class="welcome__message--1"><span>Welkom bij</span></div>
                 <div class="welcome__message--2"><span>Wijmakenbrillen.nl</span></div>
@@ -135,7 +135,7 @@ get_header();
 				?>
             </div>
             <div class="text-end px-5">
-                <a href="/wijmakenbrillen.nl/shop" class="text-uppercase button p-3">Bekijk alles</a>
+                <a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="text-uppercase button p-3">Bekijk alles</a>
             </div>
 </div>
 <div class="fitting__container d-lg-flex d-block flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/paskamer_bg.svg);">
@@ -212,7 +212,7 @@ get_header();
 				?>
             </div>
             <div class="text-end px-5">
-                <a href="/wijmakenbrillen.nl/shop" class="text-uppercase button p-3">Bekijk alles</a>
+                <a href="<?php echo get_permalink( wc_get_page_id( 'shop' ) ); ?>" class="text-uppercase button p-3">Bekijk alles</a>
             </div>
 
 </div>

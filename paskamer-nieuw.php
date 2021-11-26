@@ -36,9 +36,21 @@ get_header();
                                 </div>
                             </main>
                         </div>
+                        <p class="col-lg-10 col-12">
+                            Op deze pagina is het mogelijk om dit model virtueel te passen, geef toestemming aan de camera. </br></br>
+                            Klik op foto maken, houd hiervoor de telefoon op ongeveer 35cm afstand met de neusbrug van de bril op de juiste plek, de ogen iets boven het midden van het glas. (herhaal indien van toepassing)
+                            </br>
+                            </br> 
+                            De juiste afstand is ook vast te stellen door een bankpasje tussen de lijnen te houden.
+                            </br>
+                            </br> 
+                            De modellen en zonneglazen van de digitale paskamer zijn zo realistisch weergegeven en kunnen afwijken van kleur.
+                            </br>
+                            </br>
+                        </p>
                     </div>
                     <div class="col-lg-6">
-                        <p id="previewlink"><a id="myAnchorA" href="https://www.wijmakenbrillen.nl/product/anna-zwart/">Klik hier om naar
+                        <p id="previewlink"><a id="myAnchorA" href="#">Klik hier om naar
                                 de gegevens van het gekozen model te gaan.</a></p>
                         <p id="previewtext">(Gekozen model voor snelkoppeling: Anna zwart)</p>
                         <div class="row">
