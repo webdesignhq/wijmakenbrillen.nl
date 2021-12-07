@@ -601,7 +601,7 @@ add_action( 'woocommerce_after_main_content', 'woocommerce_taxonomy_archive_desc
 add_action( 'woocommerce_after_main_content', 'woocommerce_product_archive_description' );
 
 function remove_zeroes_from_price($price) {
-$price = str_replace('.00', ',-', $price);
+$price = str_replace('.00', ',- <span class="price_after"> Inclusief glazen* </span>', $price);
 return $price;}
 
 add_filter('woocommerce_get_price_html', 'remove_zeroes_from_price');
@@ -611,7 +611,11 @@ add_filter('woocommerce_cart_item_subtotal', 'remove_zeroes_from_price');
 add_filter('woocommerce_single_product_summary', 'remove_zeroes_from_price');
 add_filter('woocommerce_cart_contents_total', 'remove_zeroes_from_price');
 
-
+function after_price(){
+	$text = 'inclusief glazen*';
+	return $text;
+}
+add_action('woocommerce_after_shop_loop_item', 'after_price');
 
 
 // Remove all currency symbols
@@ -628,6 +632,40 @@ function checkout_logo(){
  <?php
 }
 add_filter('woocommerce_before_checkout_form', 'checkout_logo');
+
+add_action('wp_head', function() { ?>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-MD4TC55');</script>
+	<!-- End Google Tag Manager -->
+	<meta name="facebook-domain-verification" content="knnv6avzxg3e0oc63cqvwzpkqs9hve" />
+<?php });
+	
+	add_theme_support( 'title-tag' );
+
+
+
+	add_filter('woocommerce_billing_fields','hq_custom_billing_fields');
+
+	function hq_custom_billing_fields( $fields = array()){
+		
+		unset($fields['billing_address_2']);
+		
+		return $fields;
+		
+	}
+
+
+add_filter( 'woocommerce_order_button_html', 'misha_custom_button_html' );
+
+function misha_custom_button_html( $button_html ) {
+	$button_html = str_replace( 'Bestelling plaatsen', 'Bestelling betalen', $button_html );
+	return $button_html;
+}
+
 
 ?>
 

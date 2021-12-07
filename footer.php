@@ -13,7 +13,7 @@
 
 ?>
 
-<div class="mobile__menu__overlay--container d-xl-none d-block">
+<div class="mobile__menu__overlay--container d-xl-none d-lg-none d-md-none d-block">
 	<div class="container p-4 d-flex flex-row justify-content-end">
 		<button class="menu-close btn mt-4" type="btn" onclick=""><i class="fas fa-close"></i></button>
 	</div>
@@ -48,7 +48,7 @@
 				</div>
 				<ul>
 					<li>www.wijmakenbrillen.nl</li>
-					<li><a href="tel:0612928592">06-12928592</a></li>
+					<li><a href="tel:0621928592">06-21928592</a></li>
 					<li><a href="mailto:info@wijmakenbrillen.nl">info@wijmakenbrillen.nl</a></li>
 					<li>Schutstraat 12-01</li>
 					<li>7901 EC Hoogeveen</li>
@@ -58,6 +58,7 @@
 					<a href="https://www.instagram.com/wijmakenbrillen.nl/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
 					</div>
 				</ul>
+				<p><i>* Alle genoemde prijzen zijn inclusief btw.</i></p>
 
 			</div>
 			<div class="col-lg-3 col-12">
@@ -81,6 +82,7 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 		<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 		<script src="<?php echo get_template_directory_uri(); ?>/js/custom.js"></script>
+		
 </body>
 
 <?php wp_footer(); ?>

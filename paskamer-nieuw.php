@@ -20,7 +20,7 @@ get_header();
                                 <!-- <div class="absoluteVP1"> </div> -->
 
                                 <div class="absoluteVP2"><img
-                                            src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBtheoM.png"
+                                            src="https://wijmakenbrillen.nl/wp-content/uploads/2021/11/WMBtheoM2.png"
                                             alt="Plaat" width="100%" height="300"/></div>
 
                                 <div class="absoluteVP3">
@@ -28,15 +28,15 @@ get_header();
                                     <img src="//:0" alt="" id="camera--output"> 
                                         <img
                                             id="previewimage"
-                                            src="https://www.wijmakenbrillen.nl/wp-content/uploads/Paskamer/WMBanna01.png">
+                                            src="https://wijmakenbrillen.nl/wp-content/uploads/2021/11/Anna-C42-Zwart_Tekengebied-1.png">
                                     <img id="previewglasses"
-                                         src="https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/G6.png"
-                                         style="-webkit-mask-image: url('https://server1.webdesignhq.cloud.shockmedia.nl/~brillen/wp-content/uploads/2021/11/transparant.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;f"/>
+                                         src="https://wijmakenbrillen.nl/wp-content/uploads/2021/11/G6.png"
+                                         style="-webkit-mask-image: url('https://wijmakenbrillen.nl/wp-content/uploads/2021/11/transparant.png'); -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;"/>
                                     </div>
                                 </div>
                             </main>
                         </div>
-                        <p class="col-lg-10 col-12">
+                        <p class="col-lg-10 col-12 d-lg-block d-none">
                             Op deze pagina is het mogelijk om dit model virtueel te passen, geef toestemming aan de camera. </br></br>
                             Klik op foto maken, houd hiervoor de telefoon op ongeveer 35cm afstand met de neusbrug van de bril op de juiste plek, de ogen iets boven het midden van het glas. (herhaal indien van toepassing)
                             </br>
@@ -99,11 +99,13 @@ get_header();
                                 <?php while ($loop->have_posts()) :
                                     $loop->the_post();
 
-                                    $variations = $product->get_available_variations();
                                     global $product;
+                                    if($product->is_type( 'variable' )){
+                                        $variations = $product->get_available_variations();
+                                    }
                                     ?>
 
-                                    <div class="flex-row variation" data-modelgroup="<?php echo $product->name; ?>">
+                                    <div class="flex-row variation-glasses" data-modelgroup="<?php echo $product->name; ?>">
                                         <?php foreach ($variations as $key => $value) {
                                             // var_dump($value);
                                             $paskamer_image = get_field('paskamer_variation_image', $value['variation_id']);
@@ -171,6 +173,18 @@ get_header();
                 </div>
             </div>
         </div>
+            <p class="col-lg-10 col-12 d-lg-none d-block mt-5">
+                            Op deze pagina is het mogelijk om dit model virtueel te passen, geef toestemming aan de camera. </br></br>
+                            Klik op foto maken, houd hiervoor de telefoon op ongeveer 35cm afstand met de neusbrug van de bril op de juiste plek, de ogen iets boven het midden van het glas. (herhaal indien van toepassing)
+                            </br>
+                            </br> 
+                            De juiste afstand is ook vast te stellen door een bankpasje tussen de lijnen te houden.
+                            </br>
+                            </br> 
+                            De modellen en zonneglazen van de digitale paskamer zijn zo realistisch weergegeven en kunnen afwijken van kleur.
+                            </br>
+                            </br>
+            </p>
     </div>
 
 <?php

@@ -64,7 +64,7 @@ get_header();
 <div class="handmade__container d-lg-flex d-block flex-row" style="background-image: url(<?php bloginfo('template_directory'); ?>/assets/img/usp_bg.svg);">
             <div class="usp col-lg-5 col-12 offset-lg-1 offset-0">
                 <span><?php echo get_field('hp_titel_2'); ?></span>
-                <div class="mt-5">
+                <div class="mt-3">
 				<?php echo get_field('hp_paragraph_2'); ?>
 				</div>
             </div>

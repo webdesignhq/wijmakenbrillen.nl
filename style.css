@@ -49,6 +49,10 @@ input[type="text"], input[type="tel"], input[type="email"],input[type="password"
   padding: 25px;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 /* #dgwt-wcas-search-input-1:focus .dgwt-wcas-ico-magnifier {
   opacity: 0!important;
 }
@@ -411,6 +415,9 @@ header {
   margin-top: 111px;
   margin-bottom: 111px;
 }
+.category__container p{
+  font-size: 22px;
+}
 .product-archive h1{
   font-family: "Courier New", sans-serif!important;
   background-color: #000;
@@ -422,7 +429,7 @@ header {
   display: table;
 }
 .category__headline {
-  font-size: 35px;
+  font-size: 35px!important;
   font-family: "Courier New", sans-serif!important;
   background-color: #000;
   color: #fff;
@@ -855,8 +862,18 @@ header {
 	width: 100%;
 }
 
+.variation-glasses{
+  display: none;
+}
+
 /* Archive */
 /* NEW */
+.price_after{
+  font-size: 16px;
+  display: block;
+  font-family: 'Roboto', sans-serif!important;
+}
+
 .product-archive #showFilters{
     display: none;
   }
